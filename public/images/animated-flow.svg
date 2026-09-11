@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hubBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e1726" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+
+    <style>
+      @keyframes dash {
+        to {
+          stroke-dashoffset: -40;
+        }
+      }
+      @keyframes hubGlow {
+        0%, 100% { filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3)); }
+        50% { filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.4)); }
+      }
+      @keyframes pulseCard {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+      }
+      .flowing-line {
+        stroke-dasharray: 6, 6;
+        animation: dash 1.2s linear infinite;
+      }
+      .hub { animation: hubGlow 4s ease-in-out infinite; }
+      .p1 { animation: pulseCard 3s ease-in-out infinite; }
+      .p2 { animation: pulseCard 3s ease-in-out infinite 0.75s; }
+      .p3 { animation: pulseCard 3s ease-in-out infinite 1.5s; }
+      .p4 { animation: pulseCard 3s ease-in-out infinite 2.25s; }
+    </style>
+  </defs>
+
+  <rect width="900" height="200" rx="14" fill="#070a12" stroke="#1e293b" />
+
+  <!-- Flowing Signal Paths -->
+  <path d="M 230 100 C 350 100, 420 40, 560 40" fill="none" stroke="#06b6d4" stroke-width="2.5" class="flowing-line" />
+  <path d="M 230 100 C 350 100, 420 80, 560 80" fill="none" stroke="#f59e0b" stroke-width="2.5" class="flowing-line" />
+  <path d="M 230 100 C 350 100, 420 120, 560 120" fill="none" stroke="#10b981" stroke-width="2.5" class="flowing-line" />
+  <path d="M 230 100 C 350 100, 420 160, 560 160" fill="none" stroke="#a855f7" stroke-width="2.5" class="flowing-line" />
+
+  <!-- Central Hub (KortexDeck Engine) -->
+  <g transform="translate(40, 45)" class="hub">
+    <rect width="190" height="110" rx="16" fill="url(#hubBg)" stroke="#06b6d4" stroke-width="2" />
+    <circle cx="95" cy="40" r="20" fill="rgba(6, 182, 212, 0.15)" stroke="#22d3ee" stroke-width="1.5" />
+    <text x="95" y="46" text-anchor="middle" font-size="20">⚡</text>
+    <text x="95" y="78" text-anchor="middle" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="bold">
+      KORTEXDECK
+    </text>
+    <text x="95" y="96" text-anchor="middle" fill="#06b6d4" font-family="monospace" font-size="10" font-weight="bold">
+      500 TOOLS INDEXED
+    </text>
+  </g>
+
+  <!-- Destination Target 1: Google Antigravity -->
+  <g transform="translate(560, 22)" class="p1">
+    <rect width="290" height="36" rx="10" fill="#0b1329" stroke="#06b6d4" stroke-width="1.2" />
+    <circle cx="20" cy="18" r="4" fill="#06b6d4" />
+    <text x="36" y="22" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="bold">
+      Google Antigravity
+    </text>
+    <text x="270" y="22" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="10">
+      ~/.gemini/antigravity/rules
+    </text>
+  </g>
+
+  <!-- Destination Target 2: Anthropic Claude -->
+  <g transform="translate(560, 64)" class="p2">
+    <rect width="290" height="36" rx="10" fill="#1c1306" stroke="#f59e0b" stroke-width="1.2" />
+    <circle cx="20" cy="18" r="4" fill="#f59e0b" />
+    <text x="36" y="22" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="bold">
+      Anthropic Claude
+    </text>
+    <text x="270" y="22" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="10">
+      ~/.claude/CLAUDE.md
+    </text>
+  </g>
+
+  <!-- Destination Target 3: Cursor IDE -->
+  <g transform="translate(560, 106)" class="p3">
+    <rect width="290" height="36" rx="10" fill="#061a14" stroke="#10b981" stroke-width="1.2" />
+    <circle cx="20" cy="18" r="4" fill="#10b981" />
+    <text x="36" y="22" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="bold">
+      Cursor IDE Composer
+    </text>
+    <text x="270" y="22" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="10">
+      ~/.cursorrules
+    </text>
+  </g>
+
+  <!-- Destination Target 4: OpenAI Codex / Copilot -->
+  <g transform="translate(560, 148)" class="p4">
+    <rect width="290" height="36" rx="10" fill="#150a24" stroke="#a855f7" stroke-width="1.2" />
+    <circle cx="20" cy="18" r="4" fill="#a855f7" />
+    <text x="36" y="22" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="bold">
+      OpenAI Codex &amp; Copilot
+    </text>
+    <text x="270" y="22" text-anchor="end" fill="#94a3b8" font-family="monospace" font-size="10">
+      system_prompt.json
+    </text>
+  </g>
+</svg>

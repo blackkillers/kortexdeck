@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0b101d" />
+      <stop offset="100%" stop-color="#070a12" />
+    </linearGradient>
+
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <style>
+      @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      @keyframes line1 {
+        0%, 15% { opacity: 0; transform: translateY(5px); }
+        20%, 100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes line2 {
+        0%, 35% { opacity: 0; transform: translateY(5px); }
+        40%, 100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes line3 {
+        0%, 55% { opacity: 0; transform: translateY(5px); }
+        60%, 100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes line4 {
+        0%, 75% { opacity: 0; transform: translateY(5px); }
+        80%, 100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes glowPulse {
+        0%, 100% { filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.2)); }
+        50% { filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.45)); }
+      }
+      .cursor { animation: blink 1s infinite; }
+      .l1 { animation: line1 8s ease-in-out infinite; }
+      .l2 { animation: line2 8s ease-in-out infinite; }
+      .l3 { animation: line3 8s ease-in-out infinite; }
+      .l4 { animation: line4 8s ease-in-out infinite; }
+      .term-window { animation: glowPulse 5s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Outer Window Frame -->
+  <rect x="10" y="10" width="880" height="280" rx="14" fill="url(#termBg)" stroke="#1e293b" stroke-width="1.5" class="term-window" />
+
+  <!-- Top macOS-style Title Bar -->
+  <rect x="10" y="10" width="880" height="38" rx="14" fill="#0f172a" />
+  <rect x="10" y="36" width="880" height="12" fill="#0f172a" />
+  <line x1="10" y1="48" x2="890" y2="48" stroke="#1e293b" stroke-width="1" />
+
+  <!-- Window Dots -->
+  <circle cx="34" cy="29" r="6" fill="#ef4444" />
+  <circle cx="54" cy="29" r="6" fill="#f59e0b" />
+  <circle cx="74" cy="29" r="6" fill="#10b981" />
+
+  <!-- Window Title -->
+  <text x="450" y="33" text-anchor="middle" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="600">
+    kortexdeck-cli — 1-click neural sync — zsh (80x24)
+  </text>
+
+  <!-- Terminal Content Lines -->
+  <!-- Line 1: Interactive Search -->
+  <g class="l1" transform="translate(30, 80)">
+    <text font-family="Fira Code, Menlo, Monaco, monospace" font-size="13" fill="#38bdf8" font-weight="600">
+      ➜ <tspan fill="#f59e0b">kortexdeck</tspan> <tspan fill="#94a3b8">search</tspan> <tspan fill="#34d399">--query</tspan> <tspan fill="#f8fafc">"autonomous goal"</tspan> <tspan fill="#34d399">--target</tspan> <tspan fill="#a855f7">antigravity</tspan>
+    </text>
+  </g>
+
+  <!-- Line 2: Search Result -->
+  <g class="l2" transform="translate(30, 115)">
+    <rect x="0" y="-14" width="840" height="32" rx="6" fill="rgba(6, 182, 212, 0.08)" stroke="rgba(6, 182, 212, 0.25)" />
+    <text font-family="Fira Code, Menlo, Monaco, monospace" font-size="12" fill="#22d3ee">
+      ✓ [FOUND] <tspan fill="#f8fafc" font-weight="bold">/goal</tspan> <tspan fill="#94a3b8">— Persistent Autonomous Goal Mode (Antigravity SDK 2.0)</tspan> <tspan fill="#10b981">[0ms]</tspan>
+    </text>
+  </g>
+
+  <!-- Line 3: Sync Trigger -->
+  <g class="l3" transform="translate(30, 168)">
+    <text font-family="Fira Code, Menlo, Monaco, monospace" font-size="13" fill="#38bdf8" font-weight="600">
+      ➜ <tspan fill="#f59e0b">kortexdeck</tspan> <tspan fill="#94a3b8">sync</tspan> <tspan fill="#34d399">--dest</tspan> <tspan fill="#f8fafc">~/.cursorrules ~/.claude/CLAUDE.md</tspan>
+    </text>
+  </g>
+
+  <!-- Line 4: Success confirmation -->
+  <g class="l4" transform="translate(30, 203)">
+    <text font-family="Fira Code, Menlo, Monaco, monospace" font-size="12" fill="#10b981">
+      ✨ Injected 500 AI directives into ~/.cursorrules &amp; ~/.claude/CLAUDE.md (Safety backup: .bak created)
+    </text>
+    <text y="24" font-family="Fira Code, Menlo, Monaco, monospace" font-size="12" fill="#64748b">
+      ⚡ Total Latency: 0.8ms • Zero API Calls • 100% Client-Side Engine
+    </text>
+  </g>
+
+  <!-- Line 5: Prompt Ready + Blinking Cursor -->
+  <g transform="translate(30, 260)">
+    <text font-family="Fira Code, Menlo, Monaco, monospace" font-size="13" fill="#38bdf8" font-weight="600">
+      ➜ <tspan fill="#34d399">kortexdeck</tspan> <tspan fill="#f8fafc">Ready for next instruction</tspan>
+    </text>
+    <rect x="255" y="-12" width="8" height="15" fill="#22d3ee" class="cursor" />
+  </g>
+</svg>

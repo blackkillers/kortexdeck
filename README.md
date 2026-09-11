@@ -1,19 +1,27 @@
 <div align="center">
 
-# ⚡ KORTEXDECK (v2.5 PRO)
-### The Neural Command Station for AI Agents & Engineers
-**Google Antigravity • Anthropic Claude • Cursor IDE • OpenAI Codex • MCP Ecosystem**
+<img src="public/images/animated-header.svg" alt="KortexDeck Animated Header" width="100%" />
+
+<br/>
 
 [![Website](https://img.shields.io/badge/Live_Hub-cohenwebstudio.com%2Fkortexdeck-06b6d4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://cohenwebstudio.com/kortexdeck)
 [![GitHub](https://img.shields.io/badge/GitHub-blackkillers%2Fkortexdeck-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/blackkillers/kortexdeck)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-StudioEngine-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/studioengine)
 [![License](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)](LICENSE)
-[![Zero API](https://img.shields.io/badge/Architecture-100%25_Self_Contained-purple?style=for-the-badge)](https://cohenwebstudio.com)
+[![Zero API](https://img.shields.io/badge/Architecture-100%25_Client_Side-purple?style=for-the-badge)](https://cohenwebstudio.com)
 
-<br/>
+<br/><br/>
 
 <img src="public/images/kortexdeck_hero.jpg" alt="KortexDeck Hero Banner" width="100%" style="border-radius: 16px; border: 1px solid #1e293b; box-shadow: 0 20px 50px rgba(6, 182, 212, 0.15);" />
 
+</div>
+
+---
+
+## ⚡ Live Neural Terminal Simulation
+
+<div align="center">
+  <img src="public/images/animated-terminal.svg" alt="Live Neural Terminal Animation" width="100%" style="border-radius: 14px;" />
 </div>
 
 ---
@@ -26,15 +34,23 @@
 
 ---
 
-## 🚀 Key Features
+## 🔄 Multi-Platform Neural Signal Router
+
+<div align="center">
+  <img src="public/images/animated-flow.svg" alt="Multi-Platform Neural Routing Flow" width="100%" style="border-radius: 14px;" />
+</div>
+
+---
+
+## 🚀 Key Capabilities & Modules
 
 - 🧠 **500 Curated AI Directives & Tools**:
   - **Google Antigravity**: Autonomous slash commands (`/goal`, `/schedule`, `/browser`, `/grill-me`, `/teamwork-preview`, `/learn`, `/boost`), BigQuery, Firebase, Flutter/Dart, and Bioinformatics suites (AlphaFold, PubMed, ChEMBL).
   - **Anthropic Claude**: Claude Code CLI commands (`/bug`, `/compact`, `/cost`, `/doctor`, `/init`, `/review`, `/test`...), structural XML prompting, and context caching strategies.
   - **Cursor IDE & Codex**: `@codebase`, `@web`, `@docs` symbols, strict `.cursorrules` (TypeScript Strict, RSC, TDD, OWASP).
   - **Model Context Protocol (MCP)**: Official and community servers (`filesystem`, `postgres`, `git`, `github`, `puppeteer`, `brave-search`, `docker`, `kubernetes`, `sentry`, `linear`, `notion`...).
-- ✨ **Dynamic React Particle & Motion Effects**:
-  - Interactive neural synapse canvas network reacting to mouse movements.
+- ✨ **Dynamic React Synapse & Motion Physics**:
+  - Interactive neural synapse canvas network reacting to cursor motion.
   - Ambient glowing orb animations and micro-interactions on cards and badges.
 - ⚡ **1-Click Local Configuration Sync**:
   - Direct, safe injection into `~/.cursorrules` and `~/.claude/CLAUDE.md`.
@@ -43,7 +59,7 @@
   - Color-coded engineering themes, platform badges, and difficulty indicators (Beginner, Intermediate, Advanced).
 - 🛠️ **Interactive Command Builder**:
   - Customize argument values live with immediate command-line preview and 1-click clipboard copy.
-- 📦 **Multi-Format Export**:
+- 📦 **Multi-Format Export Engine**:
   - 1-click export to Markdown (`.md`), JSON, `.cursorrules`, or `CLAUDE.md`.
 
 ---
@@ -69,6 +85,9 @@ The script automatically synchronizes:
 kortexdeck/
 ├── public/
 │   └── images/
+│       ├── animated-header.svg      # Dynamic neural SVG banner
+│       ├── animated-terminal.svg    # Live typing CLI animation
+│       ├── animated-flow.svg        # Multi-model routing flow
 │       └── kortexdeck_hero.jpg      # Official visual artwork
 ├── src/
 │   ├── components/

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811" />
+      <stop offset="50%" stop-color="#090e1a" />
+      <stop offset="100%" stop-color="#030509" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#38bdf8;#818cf8;#06b6d4" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#3b82f6">
+        <animate attributeName="stop-color" values="#3b82f6;#8b5cf6;#f59e0b;#3b82f6" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#f59e0b">
+        <animate attributeName="stop-color" values="#f59e0b;#06b6d4;#3b82f6;#f59e0b" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0" />
+      <stop offset="50%" stop-color="#22d3ee" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <pattern id="cyberGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" />
+    </pattern>
+
+    <style>
+      @keyframes scanline {
+        0% { transform: translateY(0px); opacity: 0.1; }
+        50% { opacity: 0.7; }
+        100% { transform: translateY(240px); opacity: 0.1; }
+      }
+      @keyframes pulseNode {
+        0%, 100% { r: 3; opacity: 0.4; }
+        50% { r: 6; opacity: 1; filter: drop-shadow(0 0 6px #06b6d4); }
+      }
+      @keyframes floatTag {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-4px); }
+      }
+      .scan { animation: scanline 4s linear infinite; }
+      .node1 { animation: pulseNode 2.5s ease-in-out infinite; }
+      .node2 { animation: pulseNode 3s ease-in-out infinite 1s; }
+      .node3 { animation: pulseNode 2s ease-in-out infinite 0.5s; }
+      .tag { animation: floatTag 3s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="240" rx="16" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5" />
+  <rect width="900" height="240" rx="16" fill="url(#cyberGrid)" />
+
+  <!-- Animated Scanning Beam -->
+  <line x1="0" y1="0" x2="900" y2="0" stroke="url(#beamGrad)" stroke-width="2" class="scan" />
+
+  <!-- Background Ambient Lights -->
+  <circle cx="150" cy="70" r="100" fill="#06b6d4" opacity="0.08" filter="url(#glow)" />
+  <circle cx="750" cy="170" r="120" fill="#f59e0b" opacity="0.06" filter="url(#glow)" />
+
+  <!-- Synapse Connectors -->
+  <g stroke="rgba(6, 182, 212, 0.2)" stroke-width="1.2" stroke-dasharray="3,3">
+    <line x1="80" y1="40" x2="220" y2="90" />
+    <line x1="220" y1="90" x2="350" y2="40" />
+    <line x1="680" y1="60" x2="790" y2="120" />
+    <line x1="790" y1="120" x2="840" y2="70" />
+    <line x1="120" y1="180" x2="240" y2="140" />
+    <line x1="650" y1="180" x2="780" y2="200" />
+  </g>
+
+  <!-- Pulsing Synaptic Nodes -->
+  <circle cx="80" cy="40" r="4" fill="#06b6d4" class="node1" />
+  <circle cx="220" cy="90" r="5" fill="#38bdf8" class="node2" />
+  <circle cx="350" cy="40" r="3" fill="#818cf8" class="node3" />
+  <circle cx="680" cy="60" r="4" fill="#f59e0b" class="node1" />
+  <circle cx="790" cy="120" r="5" fill="#06b6d4" class="node2" />
+  <circle cx="840" cy="70" r="3" fill="#34d399" class="node3" />
+  <circle cx="120" cy="180" r="4" fill="#8b5cf6" class="node2" />
+  <circle cx="240" cy="140" r="3" fill="#06b6d4" class="node1" />
+
+  <!-- Cyber Badge Top -->
+  <g class="tag">
+    <rect x="330" y="24" width="240" height="24" rx="12" fill="rgba(6, 182, 212, 0.1)" stroke="rgba(6, 182, 212, 0.3)" />
+    <circle cx="344" cy="36" r="4" fill="#22d3ee">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+    <text x="356" y="40" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" font-weight="600" letter-spacing="1">
+      NEURAL COMMAND HUB • v2.5
+    </text>
+  </g>
+
+  <!-- Main Animated Brand Title -->
+  <text x="450" y="105" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="44" font-weight="900" fill="url(#cyanGrad)" letter-spacing="-1">
+    ⚡ KORTEXDECK
+  </text>
+
+  <!-- Subtitle -->
+  <text x="450" y="140" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="15" font-weight="500" fill="#94a3b8" letter-spacing="0.2">
+    500 Curated Skills, Slash Commands &amp; MCP Servers for AI Engineers
+  </text>
+
+  <!-- Supported Platforms Row -->
+  <g transform="translate(145, 175)">
+    <!-- Antigravity -->
+    <rect x="0" y="0" width="135" height="30" rx="8" fill="rgba(6, 182, 212, 0.08)" stroke="rgba(6, 182, 212, 0.3)" />
+    <text x="67" y="19" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold">Google Antigravity</text>
+
+    <!-- Claude -->
+    <rect x="150" y="0" width="135" height="30" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="rgba(245, 158, 11, 0.3)" />
+    <text x="217" y="19" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold">Anthropic Claude</text>
+
+    <!-- Cursor -->
+    <rect x="300" y="0" width="135" height="30" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.3)" />
+    <text x="367" y="19" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold">Cursor Composer</text>
+
+    <!-- MCP Protocol -->
+    <rect x="450" y="0" width="135" height="30" rx="8" fill="rgba(168, 85, 247, 0.08)" stroke="rgba(168, 85, 247, 0.3)" />
+    <text x="517" y="19" text-anchor="middle" fill="#c084fc" font-family="monospace" font-size="11" font-weight="bold">MCP Ecosystem</text>
+  </g>
+</svg>
