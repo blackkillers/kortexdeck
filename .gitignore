@@ -1,0 +1,42 @@
+# Logs & System
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node dependencies
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor & OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials
+
+# Private deployment scripts & Backups
+scripts/ssh_*.py
+scripts/apply_*.py
+scripts/update_*.py
+scripts/scp_*.py
+.deploy_helpers/
+*.bak*
+*.tar.gz
