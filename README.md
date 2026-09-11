@@ -1,13 +1,14 @@
 <div align="center">
 
 # ⚡ KORTEXDECK (v2.5 PRO)
-### The Neural Command Center for AI Agents & Engineers
-**Anthropic Claude • Google Antigravity • Cursor IDE • OpenAI Codex • MCP Ecosystem**
+### The Neural Command Station for AI Agents & Engineers
+**Google Antigravity • Anthropic Claude • Cursor IDE • OpenAI Codex • MCP Ecosystem**
 
-[![Website](https://img.shields.io/badge/Live_Demo-cohenwebstudio.com%2Fkortexdeck-06b6d4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://cohenwebstudio.com/kortexdeck)
+[![Website](https://img.shields.io/badge/Live_Hub-cohenwebstudio.com%2Fkortexdeck-06b6d4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://cohenwebstudio.com/kortexdeck)
+[![GitHub](https://img.shields.io/badge/GitHub-blackkillers%2Fkortexdeck-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/blackkillers/kortexdeck)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-StudioEngine-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/studioengine)
 [![License](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)](LICENSE)
-[![Zero API](https://img.shields.io/badge/Dependencies-0_API_Paid-purple?style=for-the-badge)](https://cohenwebstudio.com)
+[![Zero API](https://img.shields.io/badge/Architecture-100%25_Self_Contained-purple?style=for-the-badge)](https://cohenwebstudio.com)
 
 <br/>
 
@@ -17,118 +18,99 @@
 
 ---
 
-## 🌟 À Propos de KortexDeck
+## 🌟 About KortexDeck
 
-**KortexDeck** est une station de pilotage universelle répertoriant une encyclopédie interactive de **500 commandes slash (`/`), skills natifs, règles architecturales et serveurs MCP** conçus pour décupler la productivité des développeurs sur les meilleurs modèles de raisonnement IA (Claude 3.7 Sonnet, Google Antigravity 2.0, Cursor Composer, GPT-4o).
+**KortexDeck** is a unified neural command station indexing **500 curated slash commands (`/`), native agent skills, architectural prompt rules, and Model Context Protocol (MCP) servers**. It is built for next-generation developer workflows across top reasoning LLMs (Google Antigravity 2.0, Claude 3.7 Sonnet, Cursor Composer, and OpenAI Codex).
 
-> 💡 **Architecture 100% Autonome & Zero-API** : Aucun abonnement API externe n'est requis. L'indexation, la recherche sémantique floue (< 1 ms), les miniatures et le générateur de commandes fonctionnent intégralement en mémoire côté client.
-
----
-
-## 🚀 Fonctionnalités Clés
-
-- 🧠 **500 Fiches d'Outils Exhaustives** :
-  - **Google Antigravity** : Slash commands autonomes (`/goal`, `/schedule`, `/browser`, `/grill-me`, `/teamwork-preview`, `/learn`, `/boost`), skills BigQuery, Firebase, Flutter/Dart, Bio-informatique (AlphaFold, PubMed, ChEMBL).
-  - **Anthropic Claude** : Commandes Claude Code CLI (`/bug`, `/compact`, `/cost`, `/doctor`, `/init`, `/review`, `/test`...), balisage XML structurel et gestion du cache de contexte.
-  - **Cursor IDE & Codex** : Directives `@codebase`, `@web`, `@docs`, règles `.cursorrules` (TypeScript Strict, RSC, TDD, OWASP).
-  - **Model Context Protocol (MCP)** : Serveurs officiels et communautaires (`filesystem`, `postgres`, `git`, `github`, `puppeteer`, `brave-search`, `docker`, `kubernetes`, `sentry`, `linear`, `notion`...).
-- ⚡ **Synchronisation Locale 1-Clic** :
-  - Écriture directe et sécurisée dans `~/.cursorrules` et `~/.claude/CLAUDE.md`.
-  - Sauvegardes automatiques `.bak` créées avant chaque modification.
-- 🎨 **Miniatures Graphiques Thématiques** :
-  - Badges visuels dynamiques par plateforme, niveaux de difficulté (Débutant, Intermédiaire, Expert) et code couleur d'ingénierie.
-- 🛠️ **Générateur Interactif (*Command Builder*)** :
-  - Personnalisation en direct des arguments et options avec aperçu immédiat de la commande finale.
-- 📦 **Export Multi-Formats** :
-  - Exportation en un clic en Markdown (`.md`), JSON, `.cursorrules` ou `CLAUDE.md`.
+> 💡 **Zero-API Invariant**: Zero external paid API subscriptions required. Semantic fuzzy search (< 1 ms latency), particle synapse network, dynamic visual thumbnails, and interactive command builders run 100% in client-side memory.
 
 ---
 
-## 🛠️ Installation & Démarrage Local
+## 🚀 Key Features
 
-### Prérequis
-- [Node.js](https://nodejs.org/) (version 18 ou supérieure)
-- npm ou pnpm
-
-### Lancer le projet
-```bash
-# 1. Cloner le dépôt
-git clone https://github.com/blackkillers/kortexdeck.git
-cd kortexdeck
-
-# 2. Installer les dépendances
-npm install
-
-# 3. Lancer le serveur local
-npm run dev
-```
-
-L'application est disponible immédiatement sur `http://localhost:5173/kortexdeck/`.
+- 🧠 **500 Curated AI Directives & Tools**:
+  - **Google Antigravity**: Autonomous slash commands (`/goal`, `/schedule`, `/browser`, `/grill-me`, `/teamwork-preview`, `/learn`, `/boost`), BigQuery, Firebase, Flutter/Dart, and Bioinformatics suites (AlphaFold, PubMed, ChEMBL).
+  - **Anthropic Claude**: Claude Code CLI commands (`/bug`, `/compact`, `/cost`, `/doctor`, `/init`, `/review`, `/test`...), structural XML prompting, and context caching strategies.
+  - **Cursor IDE & Codex**: `@codebase`, `@web`, `@docs` symbols, strict `.cursorrules` (TypeScript Strict, RSC, TDD, OWASP).
+  - **Model Context Protocol (MCP)**: Official and community servers (`filesystem`, `postgres`, `git`, `github`, `puppeteer`, `brave-search`, `docker`, `kubernetes`, `sentry`, `linear`, `notion`...).
+- ✨ **Dynamic React Particle & Motion Effects**:
+  - Interactive neural synapse canvas network reacting to mouse movements.
+  - Ambient glowing orb animations and micro-interactions on cards and badges.
+- ⚡ **1-Click Local Configuration Sync**:
+  - Direct, safe injection into `~/.cursorrules` and `~/.claude/CLAUDE.md`.
+  - Automatic safety backups (`.bak`) generated prior to every write operation.
+- 🎨 **Graphic Thumbnails & Card Badges**:
+  - Color-coded engineering themes, platform badges, and difficulty indicators (Beginner, Intermediate, Advanced).
+- 🛠️ **Interactive Command Builder**:
+  - Customize argument values live with immediate command-line preview and 1-click clipboard copy.
+- 📦 **Multi-Format Export**:
+  - 1-click export to Markdown (`.md`), JSON, `.cursorrules`, or `CLAUDE.md`.
 
 ---
 
-## 💻 Synchronisation Locale via Script Shell
+## 💻 Terminal Automation (CLI Sync Script)
 
-Vous pouvez synchroniser votre stack sélectionnée directement depuis votre terminal sans ouvrir le navigateur :
+Apply your customized stack directly from your terminal:
 
 ```bash
-# Rendre le script exécutable et le lancer
 chmod +x ./scripts/sync-stack.sh
 ./scripts/sync-stack.sh
 ```
 
-Le script met automatiquement à jour :
-1. `~/.cursorrules` (pour Cursor IDE)
-2. `~/.claude/CLAUDE.md` (pour Claude Code & Claude Desktop)
+The script automatically synchronizes:
+1. `~/.cursorrules` (for Cursor IDE)
+2. `~/.claude/CLAUDE.md` (for Claude Code & Claude Desktop)
 
 ---
 
-## 🏗️ Architecture Technique
+## 🏗️ Architecture & Component Hierarchy
 
 ```
-omnicommand-hub/
+kortexdeck/
 ├── public/
 │   └── images/
-│       └── kortexdeck_hero.jpg      # Illustration officielle
+│       └── kortexdeck_hero.jpg      # Official visual artwork
 ├── src/
 │   ├── components/
-│   │   ├── Logo.jsx                 # Logo vectoriel animé KortexDeck
-│   │   ├── Navbar.jsx               # Barre de navigation & liens rapides
-│   │   ├── HeroStats.jsx            # Bannière d'accueil & passerelles IA
-│   │   ├── FilterBar.jsx            # Filtres multi-critères & facettes
-│   │   ├── CommandCard.jsx          # Carte avec miniature et copie 1-clic
-│   │   ├── DetailModal.jsx          # Fiche complète & constructeur
-│   │   ├── CommandBuilder.jsx       # Formulaire dynamique d'arguments
-│   │   ├── FavoritesDrawer.jsx      # Panier de stack personnalisée
-│   │   ├── SyncModal.jsx            # Modal de synchronisation locale
-│   │   ├── AIBridgeModal.jsx        # Passerelle de connexion aux 4 IA
-│   │   └── ThumbnailGenerator.jsx   # Rendu graphique des miniatures
+│   │   ├── Logo.jsx                 # Animated vector neural mark
+│   │   ├── Navbar.jsx               # Header with global search & quick links
+│   │   ├── HeroStats.jsx            # Neural hero showcase & AI bridges
+│   │   ├── FilterBar.jsx            # Multi-facet filters & categories
+│   │   ├── CommandCard.jsx          # Interactive card with copy & save
+│   │   ├── DetailModal.jsx          # Deep documentation modal & builder
+│   │   ├── CommandBuilder.jsx       # Dynamic argument generator
+│   │   ├── FavoritesDrawer.jsx      # Custom stack drawer & export engine
+│   │   ├── SyncModal.jsx            # 1-click local sync automation
+│   │   ├── AIBridgeModal.jsx        # Direct prompt bridge for 4 AI engines
+│   │   ├── BackgroundEffects.jsx    # Real-time synapse canvas & ambient lights
+│   │   └── ThumbnailGenerator.jsx   # Vector thumbnail renderer
 │   ├── data/
-│   │   ├── commandsData.json        # Base de données des 500 outils
-│   │   └── categories.js            # Filtres et plateformes
+│   │   ├── commandsData.json        # Database of 500 AI tools & skills
+│   │   └── categories.js            # Filter definitions & taxonomy
 │   ├── utils/
-│   │   └── searchEngine.js          # Moteur MiniSearch & synonymes
-│   ├── App.jsx                      # Contrôleur principal
+│   │   └── searchEngine.js          # Client-side MiniSearch indexing
+│   ├── App.jsx                      # Main application orchestrator
 │   └── main.jsx
 ├── scripts/
-│   └── sync-stack.sh                # Script bash de synchronisation locale
-├── vite.config.js                   # Config Vite & API middleware local
+│   └── sync-stack.sh                # Shell sync script
+├── vite.config.js                   # Vite bundler configuration
 └── tailwind.config.js
 ```
 
 ---
 
-## ☕ Soutenir le Projet
+## ☕ Support the Project
 
-Si **KortexDeck** vous aide dans vos workflows de développement au quotidien, vous pouvez soutenir le studio :
+If **KortexDeck** enhances your development workflow, feel free to support our work:
 
-👉 **[Offrir un café sur Buy Me a Coffee](https://buymeacoffee.com/studioengine)**
+👉 **[Buy Me a Coffee](https://buymeacoffee.com/studioengine)**
 
 ---
 
-## 👨‍💻 Auteur & Crédits
+## 👨‍💻 Author & Credits
 
-- **Conçu & Développé par** : **Cohen Web Studio**
-- **Site Officiel** : [https://cohenwebstudio.com](https://cohenwebstudio.com)
-- **Application Déployée** : [https://cohenwebstudio.com/kortexdeck](https://cohenwebstudio.com/kortexdeck)
-- **Licence** : [MIT](LICENSE)
+- **Designed & Developed by**: **Cohen Web Studio**
+- **Official Website**: [https://cohenwebstudio.com](https://cohenwebstudio.com)
+- **Live Deployment**: [https://cohenwebstudio.com/kortexdeck](https://cohenwebstudio.com/kortexdeck)
+- **GitHub Repository**: [https://github.com/blackkillers/kortexdeck](https://github.com/blackkillers/kortexdeck)
+- **License**: [MIT](LICENSE)

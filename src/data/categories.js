@@ -1,14 +1,14 @@
-// Catégories et plateformes dynamiques pour OmniCommand Hub
+// Dynamic categories and platforms for KortexDeck
 export const CATEGORIES = [
   {
     "id": "all",
-    "name": "Tous",
+    "name": "All",
     "icon": "LayoutGrid",
     "count": 500
   },
   {
     "id": "Workflow & Agents",
-    "name": "Workflow & Agents",
+    "name": "Workflows & Agents",
     "icon": "Bot",
     "count": 46
   },
@@ -20,31 +20,31 @@ export const CATEGORIES = [
   },
   {
     "id": "Debugging & Tests",
-    "name": "Debug & Tests QA",
+    "name": "Debug & QA Testing",
     "icon": "Activity",
     "count": 35
   },
   {
     "id": "MCP & Integrations",
-    "name": "MCP & Protocoles",
+    "name": "MCP & Protocols",
     "icon": "Server",
     "count": 13
   },
   {
     "id": "Architecture & System",
-    "name": "Architecture & Système",
+    "name": "Architecture & Systems",
     "icon": "Layers",
     "count": 50
   },
   {
     "id": "Web & Frontend",
-    "name": "Web & Frontend",
+    "name": "Web & Modern Frontend",
     "icon": "Globe",
     "count": 41
   },
   {
     "id": "Data & Analytics",
-    "name": "Données & Analytics",
+    "name": "Data & Analytics",
     "icon": "Database",
     "count": 38
   },
@@ -56,19 +56,19 @@ export const CATEGORIES = [
   },
   {
     "id": "Security & Auth",
-    "name": "Sécurité & Auth",
+    "name": "Security & Authentication",
     "icon": "ShieldCheck",
     "count": 32
   },
   {
     "id": "AI & Multimodal",
-    "name": "IA & Multimodal",
+    "name": "AI & Multimodal",
     "icon": "Sparkles",
     "count": 36
   },
   {
     "id": "Science & Bio",
-    "name": "Science & Bio-Informatique",
+    "name": "Science & Bioinformatics",
     "icon": "Cpu",
     "count": 46
   }
@@ -77,7 +77,7 @@ export const CATEGORIES = [
 export const PLATFORMS = [
   {
     "id": "all",
-    "name": "Toutes plateformes",
+    "name": "All Platforms",
     "icon": "Layers"
   },
   {
@@ -100,13 +100,13 @@ export const PLATFORMS = [
   },
   {
     "id": "mcp",
-    "name": "Serveurs MCP",
+    "name": "MCP Servers",
     "icon": "Server",
     "color": "text-purple-400 bg-purple-950/60 border-purple-800"
   },
   {
     "id": "universal",
-    "name": "Multi-Plateforme",
+    "name": "Multi-Platform",
     "icon": "Globe",
     "color": "text-rose-400 bg-rose-950/60 border-rose-800"
   }

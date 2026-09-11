@@ -82,14 +82,14 @@ export default function CommandBuilder({ item }) {
       <div className="flex items-center justify-between pb-3 border-b border-slate-800">
         <div className="flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-cyan-400" />
-          <h4 className="text-sm font-bold text-slate-200">Générateur Interactif de Commande</h4>
+          <h4 className="text-sm font-bold text-slate-200">Interactive Command Generator</h4>
         </div>
         <button
           onClick={handleReset}
           className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-800 px-2 py-1 rounded transition-colors"
         >
           <RotateCcw className="w-3 h-3" />
-          <span>Réinitialiser</span>
+          <span>Reset</span>
         </button>
       </div>
 
@@ -112,13 +112,13 @@ export default function CommandBuilder({ item }) {
                   onChange={(e) => handleInputChange(arg.name, e.target.value)}
                   className="bg-slate-900 border border-slate-700/80 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono"
                 >
-                  <option value="true">Activé (true)</option>
-                  <option value="false">Désactivé (false)</option>
+                  <option value="true">Enabled (true)</option>
+                  <option value="false">Disabled (false)</option>
                 </select>
               ) : (
                 <input
                   type="text"
-                  placeholder={arg.description || `Valeur pour ${arg.name}`}
+                  placeholder={arg.description || `Value for ${arg.name}`}
                   value={argValues[arg.name] || ''}
                   onChange={(e) => handleInputChange(arg.name, e.target.value)}
                   className="bg-slate-900 border border-slate-700/80 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono placeholder:text-slate-600"
@@ -132,7 +132,7 @@ export default function CommandBuilder({ item }) {
         </div>
       ) : (
         <div className="py-4 text-xs text-slate-400 font-mono italic">
-          Cette commande ne requiert aucun argument obligatoire. Vous pouvez l'exécuter directement.
+          This command requires no mandatory arguments. You can execute it directly.
         </div>
       )}
 
@@ -141,7 +141,7 @@ export default function CommandBuilder({ item }) {
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-mono font-medium text-slate-400 flex items-center gap-1.5">
             <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-            Ligne de commande générée :
+            Generated Command Line:
           </span>
           <button
             onClick={handleCopyGenerated}
@@ -154,12 +154,12 @@ export default function CommandBuilder({ item }) {
             {copied ? (
               <>
                 <Check className="w-3.5 h-3.5" />
-                <span>Copié dans le presse-papier !</span>
+                <span>Copied to clipboard!</span>
               </>
             ) : (
               <>
                 <Copy className="w-3.5 h-3.5" />
-                <span>Copier la commande personnalisée</span>
+                <span>Copy custom command</span>
               </>
             )}
           </button>

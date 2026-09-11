@@ -29,7 +29,7 @@ export default function FilterBar({
   totalResults
 }) {
   const types = ["all", "Slash Command", "Skill", "MCP Server", "Extension", "Prompt Template", "Workflow", "Rule / Prompt"];
-  const difficulties = ["all", "Débutant", "Intermédiaire", "Expert"];
+  const difficulties = ["all", "Beginner", "Intermediate", "Advanced"];
 
   const hasActiveFilters = 
     selectedPlatform !== 'all' ||
@@ -93,13 +93,13 @@ export default function FilterBar({
         <div className="flex flex-wrap items-center gap-2">
           {/* Type Selector */}
           <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5">
-            <span className="text-[11px] font-mono text-slate-500">Type :</span>
+            <span className="text-[11px] font-mono text-slate-500">Type:</span>
             <select
               value={selectedType}
               onChange={(e) => onSelectType(e.target.value)}
               className="bg-transparent text-xs font-medium text-slate-200 focus:outline-none cursor-pointer"
             >
-              <option value="all" className="bg-slate-900 text-slate-200">Tous les types</option>
+              <option value="all" className="bg-slate-900 text-slate-200">All Types</option>
               {types.filter(t => t !== 'all').map((t, idx) => (
                 <option key={idx} value={t} className="bg-slate-900 text-slate-200">{t}</option>
               ))}
@@ -108,13 +108,13 @@ export default function FilterBar({
 
           {/* Difficulty Selector */}
           <div className="flex items-center gap-1.5 bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5">
-            <span className="text-[11px] font-mono text-slate-500">Niveau :</span>
+            <span className="text-[11px] font-mono text-slate-500">Level:</span>
             <select
               value={selectedDifficulty}
               onChange={(e) => onSelectDifficulty(e.target.value)}
               className="bg-transparent text-xs font-medium text-slate-200 focus:outline-none cursor-pointer"
             >
-              <option value="all" className="bg-slate-900 text-slate-200">Tous niveaux</option>
+              <option value="all" className="bg-slate-900 text-slate-200">All Levels</option>
               {difficulties.filter(d => d !== 'all').map((d, idx) => (
                 <option key={idx} value={d} className="bg-slate-900 text-slate-200">{d}</option>
               ))}
@@ -131,7 +131,7 @@ export default function FilterBar({
             }`}
           >
             <Star className={`w-3.5 h-3.5 ${popularOnly ? 'text-amber-400 fill-amber-400' : 'text-slate-500'}`} />
-            <span>Top Populaires</span>
+            <span>Top Featured</span>
           </button>
 
           {/* Reset Filters */}
@@ -141,14 +141,14 @@ export default function FilterBar({
               className="flex items-center gap-1 text-xs text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 px-2.5 py-1.5 rounded-xl transition-colors border border-rose-500/20"
             >
               <RotateCcw className="w-3 h-3" />
-              <span>Réinitialiser</span>
+              <span>Reset Filters</span>
             </button>
           )}
         </div>
 
         {/* Total Results Count */}
         <div className="text-xs font-mono text-slate-400">
-          <span className="text-cyan-400 font-bold">{totalResults}</span> résultats trouvés
+          <span className="text-cyan-400 font-bold">{totalResults}</span> items indexed
         </div>
       </div>
     </div>

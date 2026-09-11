@@ -7,6 +7,7 @@ import DetailModal from './components/DetailModal';
 import FavoritesDrawer from './components/FavoritesDrawer';
 import SyncModal from './components/SyncModal';
 import AIBridgeModal from './components/AIBridgeModal';
+import BackgroundEffects from './components/BackgroundEffects';
 import { searchCommands } from './utils/searchEngine';
 import commandsData from './data/commandsData.json';
 import { Sparkles, Terminal, ArrowUp, Zap, HelpCircle, Layers } from 'lucide-react';
@@ -115,7 +116,10 @@ export default function App() {
   const visibleCommands = filteredCommands.slice(0, displayLimit);
 
   return (
-    <div className="min-h-screen bg-[#070a12] text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-white font-sans antialiased">
+    <div className="min-h-screen bg-[#070a12] text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-white font-sans antialiased relative">
+      {/* Background Interactive Synapse Canvas & Glows */}
+      <BackgroundEffects />
+
       {/* Top Navigation */}
       <Navbar
         searchQuery={searchQuery}
@@ -128,7 +132,7 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+      <main className="relative z-10 flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
         {/* Hero Section */}
         <HeroStats
           onQuickSearch={handleQuickSearch}
@@ -157,17 +161,17 @@ export default function App() {
 
         {/* Grid of Command Cards */}
         {visibleCommands.length === 0 ? (
-          <div className="py-20 flex flex-col items-center justify-center text-center bg-slate-900/40 rounded-3xl border border-slate-800">
+          <div className="py-20 flex flex-col items-center justify-center text-center bg-slate-900/40 rounded-3xl border border-slate-800 backdrop-blur-md">
             <HelpCircle className="w-12 h-12 text-slate-600 mb-3" />
-            <h3 className="text-lg font-bold text-slate-300">Aucun résultat trouvé</h3>
+            <h3 className="text-lg font-bold text-slate-300">No matching tools found</h3>
             <p className="text-sm text-slate-500 mt-1 max-w-md">
-              Aucune commande ou skill ne correspond à vos filtres actuels. Essayez d'autres mots-clés ou réinitialisez les filtres.
+              No command or skill matches your active filters. Try searching for different keywords or resetting filters.
             </p>
             <button
               onClick={handleResetFilters}
-              className="mt-4 px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-semibold transition-all"
+              className="mt-4 px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 text-xs font-semibold transition-all hover:scale-105"
             >
-              Réinitialiser tous les filtres
+              Reset All Filters
             </button>
           </div>
         ) : (
@@ -189,21 +193,21 @@ export default function App() {
           <div className="mt-10 text-center">
             <button
               onClick={handleLoadMore}
-              className="px-6 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-xs shadow-lg hover:border-cyan-500/50 transition-all"
+              className="px-6 py-3 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-slate-200 font-semibold text-xs shadow-lg shadow-cyan-500/5 transition-all hover:scale-105"
             >
-              Charger plus ({filteredCommands.length - displayLimit} restants)
+              Load More ({filteredCommands.length - displayLimit} remaining)
             </button>
           </div>
         )}
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 bg-slate-950/90 py-8 text-center text-xs text-slate-500">
+      <footer className="relative z-10 border-t border-slate-800/80 bg-slate-950/90 py-8 text-center text-xs text-slate-500 backdrop-blur-lg">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Terminal className="w-4 h-4 text-cyan-400" />
             <span className="font-bold text-slate-300">KORTEXDECK v2.5</span>
-            <span>— 500 Commandes, Skills & MCPs</span>
+            <span>— 500 Curated Commands, Skills & MCPs</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -211,7 +215,7 @@ export default function App() {
               onClick={() => setIsAIBridgeOpen(true)}
               className="inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 transition-colors font-medium bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 px-3 py-1 rounded-full"
             >
-              <span>⚡ Passerelle IA (Claude, Antigravity, Codex, Cursor)</span>
+              <span>⚡ AI Multi-Bridge (Claude, Antigravity, Codex, Cursor)</span>
             </button>
 
             <a
@@ -220,11 +224,11 @@ export default function App() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition-colors font-medium bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-3 py-1 rounded-full"
             >
-              <span>☕ Offrir un café sur Buy Me a Coffee</span>
+              <span>☕ Support on Buy Me a Coffee</span>
             </a>
 
             <div className="flex items-center gap-1 text-slate-400">
-              <span>Propulsé par</span>
+              <span>Powered by</span>
               <a 
                 href="https://cohenwebstudio.com" 
                 target="_blank" 
@@ -278,7 +282,7 @@ export default function App() {
         <button
           onClick={scrollToTop}
           className="fixed bottom-6 right-6 z-30 p-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-xl shadow-cyan-500/25 transition-all animate-bounce hover:animate-none"
-          title="Retour en haut"
+          title="Scroll to top"
         >
           <ArrowUp className="w-5 h-5 font-bold" />
         </button>

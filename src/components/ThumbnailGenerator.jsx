@@ -95,9 +95,9 @@ export default function ThumbnailGenerator({ item, size = "card" }) {
         </div>
 
         <div className="relative z-10 hidden md:flex flex-col items-end gap-1">
-          <span className="text-xs text-slate-400 font-mono">AUTEUR</span>
+          <span className="text-xs text-slate-400 font-mono">AUTHOR</span>
           <span className="text-sm font-semibold text-slate-200">{item.author}</span>
-          <span className="text-xs text-slate-400 font-mono mt-1">CATÉGORIE</span>
+          <span className="text-xs text-slate-400 font-mono mt-1">CATEGORY</span>
           <span className="text-sm font-semibold text-slate-300">{item.category}</span>
         </div>
       </div>

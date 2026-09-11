@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ThumbnailGenerator from './ThumbnailGenerator';
 import CommandBuilder from './CommandBuilder';
-import { X, Copy, Check, Bookmark, BookmarkCheck, Terminal, BookOpen, Code2, Wrench, Sparkles, ExternalLink, HelpCircle } from 'lucide-react';
+import { X, Copy, Check, Bookmark, BookmarkCheck, Terminal, BookOpen, Code2, Wrench, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function DetailModal({ item, onClose, isFavorite, onToggleFavorite }) {
@@ -61,7 +61,7 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
             }`}
           >
             <BookOpen className="w-4 h-4" />
-            <span>Fiche & Explications</span>
+            <span>Overview & Documentation</span>
           </button>
 
           <button
@@ -73,7 +73,7 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
             }`}
           >
             <Wrench className="w-4 h-4" />
-            <span>Générateur Interactif</span>
+            <span>Interactive Builder</span>
           </button>
 
           <button
@@ -85,7 +85,7 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
             }`}
           >
             <Code2 className="w-4 h-4" />
-            <span>Guide d'Intégration</span>
+            <span>Integration Guide</span>
           </button>
         </div>
 
@@ -96,7 +96,7 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
               {/* Description Box */}
               <div>
                 <h4 className="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase mb-2">
-                  Pourquoi & Quand l'utiliser
+                  When & Why to Use
                 </h4>
                 <p className="text-sm text-slate-300 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800">
                   {item.description}
@@ -108,14 +108,14 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase flex items-center gap-1.5">
                     <Terminal className="w-3.5 h-3.5" />
-                    Syntaxe Formelle
+                    Formal Syntax
                   </h4>
                   <button
                     onClick={handleCopySyntax}
                     className="flex items-center gap-1 text-xs font-mono text-slate-400 hover:text-cyan-300 transition-colors"
                   >
                     {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copied ? "Copié !" : "Copier la syntaxe"}</span>
+                    <span>{copied ? "Copied!" : "Copy syntax"}</span>
                   </button>
                 </div>
                 <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-emerald-300 overflow-x-auto select-all">
@@ -127,7 +127,7 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
               <div>
                 <h4 className="text-xs font-mono font-bold text-amber-400 tracking-wider uppercase mb-2 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" />
-                  Exemple de Prompt / Utilisation Réelle
+                  Real-World Usage Example
                 </h4>
                 <div className="bg-gradient-to-r from-slate-950 to-slate-900 p-4 rounded-xl border border-slate-800 text-xs font-mono text-slate-200 leading-relaxed select-all">
                   {item.example}
@@ -138,15 +138,15 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
               {item.arguments && item.arguments.length > 0 && (
                 <div>
                   <h4 className="text-xs font-mono font-bold text-slate-400 tracking-wider uppercase mb-2">
-                    Arguments & Options Disponibles ({item.arguments.length})
+                    Available Arguments & Options ({item.arguments.length})
                   </h4>
                   <div className="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/60">
                     <table className="w-full text-left text-xs">
                       <thead className="bg-slate-900 text-slate-400 font-mono border-b border-slate-800">
                         <tr>
-                          <th className="py-2.5 px-4">Paramètre</th>
+                          <th className="py-2.5 px-4">Parameter</th>
                           <th className="py-2.5 px-4">Type</th>
-                          <th className="py-2.5 px-4">Requis</th>
+                          <th className="py-2.5 px-4">Required</th>
                           <th className="py-2.5 px-4">Description</th>
                         </tr>
                       </thead>
@@ -157,9 +157,9 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
                             <td className="py-2.5 px-4 font-mono text-slate-400">{arg.type}</td>
                             <td className="py-2.5 px-4 font-mono">
                               {arg.required ? (
-                                <span className="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded border border-rose-500/30 text-[10px]">Oui</span>
+                                <span className="text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded border border-rose-500/30 text-[10px]">Yes</span>
                               ) : (
-                                <span className="text-slate-500 text-[10px]">Optionnel</span>
+                                <span className="text-slate-500 text-[10px]">Optional</span>
                               )}
                             </td>
                             <td className="py-2.5 px-4 text-slate-300">{arg.description}</td>
@@ -173,7 +173,7 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
 
               {/* Tags & Metadata */}
               <div className="flex flex-wrap items-center gap-2 pt-2">
-                <span className="text-xs font-mono text-slate-500">Mots-clés :</span>
+                <span className="text-xs font-mono text-slate-500">Tags:</span>
                 {item.tags.map((tag, i) => (
                   <span key={i} className="text-xs font-mono bg-slate-800/80 text-slate-300 border border-slate-700/60 px-2.5 py-1 rounded-lg">
                     #{tag}
@@ -192,15 +192,15 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
           {activeTab === 'guide' && (
             <div className="space-y-4 text-xs">
               <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 space-y-3">
-                <h4 className="font-bold text-sm text-cyan-400">Comment exécuter cet élément selon votre environnement :</h4>
+                <h4 className="font-bold text-sm text-cyan-400">How to execute this directive in your workspace:</h4>
                 
                 {item.platform === 'antigravity' && (
                   <div className="space-y-2">
                     <p className="text-slate-300">
-                      <strong>Dans Google Antigravity :</strong> Tapez simplement <code className="text-cyan-300 bg-slate-900 px-1.5 py-0.5 rounded">{item.command}</code> dans le chat ou utilisez l'instruction système appropriée.
+                      <strong>In Google Antigravity:</strong> Type <code className="text-cyan-300 bg-slate-900 px-1.5 py-0.5 rounded">{item.command}</code> in the chat or invoke via system directives.
                     </p>
                     <p className="text-slate-400">
-                      Les skills sont automatiquement résolus et orchestrés par l'agent sans nécessiter d'installation externe.
+                      Native Antigravity skills are dynamically discovered and orchestrated by the agent without local toolchain installation.
                     </p>
                   </div>
                 )}
@@ -208,10 +208,10 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
                 {item.platform === 'claude' && (
                   <div className="space-y-2">
                     <p className="text-slate-300">
-                      <strong>Dans Claude Code CLI :</strong> Lancez votre terminal et saisissez <code className="text-amber-300 bg-slate-900 px-1.5 py-0.5 rounded">{item.command}</code> au prompt interactif.
+                      <strong>In Claude Code CLI:</strong> Launch your shell and input <code className="text-amber-300 bg-slate-900 px-1.5 py-0.5 rounded">{item.command}</code> in the interactive prompt.
                     </p>
                     <p className="text-slate-400">
-                      Pour Claude Desktop, assurez-vous d'avoir configuré le fichier <code className="text-slate-300">claude_desktop_config.json</code> avec les permissions adéquates.
+                      For Claude Desktop, configure the server in <code className="text-slate-300">claude_desktop_config.json</code> with appropriate permissions.
                     </p>
                   </div>
                 )}
@@ -219,7 +219,7 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
                 {item.platform === 'cursor' && (
                   <div className="space-y-2">
                     <p className="text-slate-300">
-                      <strong>Dans Cursor IDE :</strong> Utilisez le symbole <code className="text-emerald-300 bg-slate-900 px-1.5 py-0.5 rounded">{item.command}</code> dans le panneau Composer (⌘I / Ctrl+I) ou le Chat (⌘L / Ctrl+L).
+                      <strong>In Cursor IDE:</strong> Use symbol <code className="text-emerald-300 bg-slate-900 px-1.5 py-0.5 rounded">{item.command}</code> in the Composer panel (⌘I / Ctrl+I) or Chat (⌘L / Ctrl+L).
                     </p>
                   </div>
                 )}
@@ -227,7 +227,7 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
                 {item.platform === 'mcp' && (
                   <div className="space-y-2">
                     <p className="text-slate-300">
-                      <strong>Configuration MCP universelle :</strong> Ajoutez la définition du serveur dans votre fichier de configuration JSON :
+                      <strong>Universal MCP Server Configuration:</strong> Add the definition block to your JSON config:
                     </p>
                     <pre className="p-3 bg-slate-900 rounded-lg text-purple-300 font-mono text-[11px] overflow-x-auto">
 {`{
@@ -259,29 +259,29 @@ export default function DetailModal({ item, onClose, isFavorite, onToggleFavorit
             {isFavorite ? (
               <>
                 <BookmarkCheck className="w-4 h-4 text-rose-400" />
-                <span>Dans ma Stack</span>
+                <span>In My Stack</span>
               </>
             ) : (
               <>
                 <Bookmark className="w-4 h-4" />
-                <span>Sauvegarder dans ma Stack</span>
+                <span>Save to My Stack</span>
               </>
             )}
           </button>
 
           <button
             onClick={handleCopySyntax}
-            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/20 transition-all"
+            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
           >
             {copied ? (
               <>
                 <Check className="w-4 h-4" />
-                <span>Copié dans le presse-papier !</span>
+                <span>Copied to clipboard!</span>
               </>
             ) : (
               <>
                 <Copy className="w-4 h-4" />
-                <span>Copier {item.command}</span>
+                <span>Copy {item.command}</span>
               </>
             )}
           </button>

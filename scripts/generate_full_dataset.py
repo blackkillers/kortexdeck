@@ -5,27 +5,27 @@ DATA_FILE = Path("/Users/ilan/.gemini/antigravity/scratch/omnicommand-hub/src/da
 CATEGORIES_FILE = Path("/Users/ilan/.gemini/antigravity/scratch/omnicommand-hub/src/data/categories.js")
 
 CATEGORIES = [
-    {"id": "all", "name": "Tous", "icon": "LayoutGrid", "count": 500},
-    {"id": "Workflow & Agents", "name": "Workflow & Agents", "icon": "Bot", "count": 0},
+    {"id": "all", "name": "All", "icon": "LayoutGrid", "count": 500},
+    {"id": "Workflow & Agents", "name": "Workflows & Agents", "icon": "Bot", "count": 0},
     {"id": "Code & Refactor", "name": "Code & Refactoring", "icon": "Code", "count": 0},
-    {"id": "Debugging & Tests", "name": "Debug & Tests QA", "icon": "Activity", "count": 0},
-    {"id": "MCP & Integrations", "name": "MCP & Protocoles", "icon": "Server", "count": 0},
-    {"id": "Architecture & System", "name": "Architecture & Système", "icon": "Layers", "count": 0},
-    {"id": "Web & Frontend", "name": "Web & Frontend", "icon": "Globe", "count": 0},
-    {"id": "Data & Analytics", "name": "Données & Analytics", "icon": "Database", "count": 0},
+    {"id": "Debugging & Tests", "name": "Debug & QA Testing", "icon": "Activity", "count": 0},
+    {"id": "MCP & Integrations", "name": "MCP & Protocols", "icon": "Server", "count": 0},
+    {"id": "Architecture & System", "name": "Architecture & Systems", "icon": "Layers", "count": 0},
+    {"id": "Web & Frontend", "name": "Web & Modern Frontend", "icon": "Globe", "count": 0},
+    {"id": "Data & Analytics", "name": "Data & Analytics", "icon": "Database", "count": 0},
     {"id": "DevOps & Cloud", "name": "DevOps, Cloud & CI/CD", "icon": "Cloud", "count": 0},
-    {"id": "Security & Auth", "name": "Sécurité & Auth", "icon": "ShieldCheck", "count": 0},
-    {"id": "AI & Multimodal", "name": "IA & Multimodal", "icon": "Sparkles", "count": 0},
-    {"id": "Science & Bio", "name": "Science & Bio-Informatique", "icon": "Cpu", "count": 0}
+    {"id": "Security & Auth", "name": "Security & Authentication", "icon": "ShieldCheck", "count": 0},
+    {"id": "AI & Multimodal", "name": "AI & Multimodal", "icon": "Sparkles", "count": 0},
+    {"id": "Science & Bio", "name": "Science & Bioinformatics", "icon": "Cpu", "count": 0}
 ]
 
 PLATFORMS = [
-    {"id": "all", "name": "Toutes plateformes", "icon": "Layers"},
+    {"id": "all", "name": "All Platforms", "icon": "Layers"},
     {"id": "antigravity", "name": "Google Antigravity", "icon": "Zap", "color": "text-sky-400 bg-sky-950/60 border-sky-800"},
     {"id": "claude", "name": "Anthropic Claude", "icon": "Cpu", "color": "text-amber-400 bg-amber-950/60 border-amber-800"},
     {"id": "cursor", "name": "Cursor / Codex", "icon": "Code", "color": "text-emerald-400 bg-emerald-950/60 border-emerald-800"},
-    {"id": "mcp", "name": "Serveurs MCP", "icon": "Server", "color": "text-purple-400 bg-purple-950/60 border-purple-800"},
-    {"id": "universal", "name": "Multi-Plateforme", "icon": "Globe", "color": "text-rose-400 bg-rose-950/60 border-rose-800"}
+    {"id": "mcp", "name": "MCP Servers", "icon": "Server", "color": "text-purple-400 bg-purple-950/60 border-purple-800"},
+    {"id": "universal", "name": "Multi-Platform", "icon": "Globe", "color": "text-rose-400 bg-rose-950/60 border-rose-800"}
 ]
 
 GRADIENTS = [
@@ -70,251 +70,250 @@ def add_entry(id, title, command, platform, category, item_type, summary, descri
     })
 
 # ==============================================================================
-# 1. GOOGLE ANTIGRAVITY ECOSYSTEM (85 items)
+# 1. GOOGLE ANTIGRAVITY ECOSYSTEM (85 items) - IN ENGLISH
 # ==============================================================================
 
-# Core Agent Slash Commands
-add_entry("agy-goal", "Mode Autonome Persistant (/goal)", "/goal", "antigravity", "Workflow & Agents", "Slash Command",
-          "Orchestre un travail autonome approfondi sans s'arrêter avant résolution totale.",
-          "Active le mode objectif autonome persistant. L'agent effectue des cycles d'investigation, d'édition, de tests unitaires et d'auto-correction jusqu'à validation complète de la consigne.",
-          "/goal <objectif_détaillé> [--max-steps N] [--verify-tests]",
-          [{"name": "objectif", "type": "string", "required": True, "description": "Description exhaustive du livrable attendu"},
-           {"name": "--max-steps", "type": "number", "required": False, "description": "Limite maximale d'itérations", "defaultValue": "50"},
-           {"name": "--verify-tests", "type": "boolean", "required": False, "description": "Exécution obligatoire de la suite de tests", "defaultValue": "true"}],
-          "/goal Migrer l'application de Redux vers Zustand avec typage strict TypeScript et 100% de tests au vert.",
+add_entry("agy-goal", "Persistent Autonomous Mode (/goal)", "/goal", "antigravity", "Workflow & Agents", "Slash Command",
+          "Executes long-running autonomous tasks without stopping until all success criteria are met.",
+          "Engages the persistent autonomous agent loop. The agent conducts iterative research, code editing, unit test execution, and self-correction until full resolution is achieved and verified.",
+          "/goal <detailed_objective> [--max-steps N] [--verify-tests]",
+          [{"name": "objective", "type": "string", "required": True, "description": "Complete description of deliverables and acceptance criteria"},
+           {"name": "--max-steps", "type": "number", "required": False, "description": "Maximum iteration steps", "defaultValue": "50"},
+           {"name": "--verify-tests", "type": "boolean", "required": False, "description": "Mandatory test suite pass before completion", "defaultValue": "true"}],
+          "/goal Migrate the entire authentication module to NextAuth v5 with JWT session handling and 100% Vitest coverage.",
           "Target", "from-cyan-500 to-blue-600", ["goal", "autonomous", "agent", "long-running", "unsupervised"], "Expert", "Google Antigravity", True)
 
-add_entry("agy-schedule", "Planificateur Asynchrone & Cron (/schedule)", "/schedule", "antigravity", "Workflow & Agents", "Slash Command",
-          "Déclenche des timers ou des crons récurrents en arrière-plan.",
-          "Permet à l'agent de planifier des vérifications d'état, des surveillances de déploiement ou des relances programmées sans bloquer la conversation active.",
+add_entry("agy-schedule", "Async Scheduler & Cron Jobs (/schedule)", "/schedule", "antigravity", "Workflow & Agents", "Slash Command",
+          "Schedules background timers and recurring cron notifications without blocking current work.",
+          "Allows the agent to schedule one-off reminders, deployment health-checks, or periodic polling tasks in the background without freezing active conversation turns.",
           "/schedule --duration <sec> | --cron <expr> --prompt <message>",
-          [{"name": "--duration", "type": "number", "required": False, "description": "Durée en secondes pour un rappel ponctuel"},
-           {"name": "--cron", "type": "string", "required": False, "description": "Expression cron standard 5 champs"},
-           {"name": "--prompt", "type": "string", "required": True, "description": "Action ou question à exécuter au réveil"}],
-          "/schedule --duration 300 --prompt 'Vérifie si le conteneur Docker est en statut Healthy et analyse les logs d\\'erreur'",
-          "Clock", "from-blue-600 to-indigo-700", ["schedule", "cron", "timer", "background", "polling"], "Intermédiaire", "Google Antigravity", True)
+          [{"name": "--duration", "type": "number", "required": False, "description": "Seconds to wait for a one-shot reminder (e.g. 300 for 5m)"},
+           {"name": "--cron", "type": "string", "required": False, "description": "Standard 5-field cron expression (e.g. '*/5 * * * *')"},
+           {"name": "--prompt", "type": "string", "required": True, "description": "Instruction prompt sent on trigger"}],
+          "/schedule --duration 300 --prompt 'Check if Docker container status is healthy and analyze any error logs'",
+          "Clock", "from-blue-600 to-indigo-700", ["schedule", "cron", "timer", "background", "polling"], "Intermediate", "Google Antigravity", True)
 
-add_entry("agy-browser", "Automatisation Web Réelle (/browser)", "/browser", "antigravity", "Web & Frontend", "Slash Command",
-          "Navigue, inspecte, clique et capture des pages web en direct.",
-          "Active le navigateur headless contrôlé pour explorer des applications locales (localhost) ou distantes, remplir des formulaires, analyser la console JS et vérifier le rendu responsive.",
+add_entry("agy-browser", "Headless Web Automation (/browser)", "/browser", "antigravity", "Web & Frontend", "Slash Command",
+          "Navigates, clicks, fills forms, inspects DOM, and captures live screenshots in real browsers.",
+          "Enables controlled headless web browsing for inspecting local (localhost) or remote web apps, interacting with UI components, capturing visual diffs, and analyzing JavaScript console errors.",
           "/browser <url> [--action click|type|screenshot] [--query text]",
-          [{"name": "url", "type": "string", "required": True, "description": "URL locale ou web à ouvrir"},
-           {"name": "--action", "type": "string", "required": False, "description": "Action utilisateur à simuler"},
-           {"name": "--query", "type": "string", "required": False, "description": "Sélecteur ou texte recherché"}],
+          [{"name": "url", "type": "string", "required": True, "description": "Target local or web URL to inspect"},
+           {"name": "--action", "type": "string", "required": False, "description": "Simulated user interaction"},
+           {"name": "--query", "type": "string", "required": False, "description": "DOM selector or search query"}],
           "/browser http://localhost:5173 --action screenshot --inspect-console",
-          "Globe", "from-emerald-500 to-teal-600", ["browser", "web", "e2e", "scraping", "devtools", "screenshot"], "Débutant", "Google Antigravity", True)
+          "Globe", "from-emerald-500 to-teal-600", ["browser", "web", "e2e", "scraping", "devtools", "screenshot"], "Beginner", "Google Antigravity", True)
 
-add_entry("agy-grill-me", "Interview Socratique d'Architecture (/grill-me)", "/grill-me", "antigravity", "Architecture & System", "Slash Command",
-          "Interrogatoire méthodique pour éliminer toute ambiguïté architecturale.",
-          "L'agent prend la posture d'un Lead Architecte exigeant et pose une série de questions ciblées pour valider les choix technologiques, les contraintes de sécurité et le modèle de données avant d'écrire une seule ligne de code.",
-          "/grill-me <sujet_ou_spec>",
-          [{"name": "sujet", "type": "string", "required": True, "description": "Cahier des charges ou architecture à auditer"}],
-          "/grill-me Je souhaite créer un système multi-tenant avec isolation de schéma PostgreSQL et facturation Stripe par usage.",
-          "HelpCircle", "from-amber-500 to-orange-600", ["architecture", "interview", "clarification", "design", "socratic"], "Intermédiaire", "Google Antigravity", True)
+add_entry("agy-grill-me", "Socratic Architectural Interview (/grill-me)", "/grill-me", "antigravity", "Architecture & System", "Slash Command",
+          "Methodically interrogates architectural requirements to eliminate ambiguity before writing code.",
+          "The agent takes on the persona of a rigorous Lead Staff Architect, asking targeted questions to validate tech stack choices, security boundaries, and data schemas prior to code implementation.",
+          "/grill-me <spec_or_topic>",
+          [{"name": "topic", "type": "string", "required": True, "description": "Project specification, API design, or architecture to challenge"}],
+          "/grill-me I want to build a multi-tenant SaaS architecture with PostgreSQL schema isolation and Stripe metered billing.",
+          "HelpCircle", "from-amber-500 to-orange-600", ["architecture", "interview", "clarification", "design", "socratic"], "Intermediate", "Google Antigravity", True)
 
-add_entry("agy-boost", "Raisonnement Ultra-Profond (/boost)", "/boost", "antigravity", "Workflow & Agents", "Slash Command",
-          "Maximise le calcul cognitif interne pour les problèmes algorithmiques ardus.",
-          "Débloque les capacités de réflexion étendue (Chain-of-Thought profond) avec décomposition formelle : Pensée -> Auto-critique -> Raffinement avant toute proposition de code.",
-          "/boost <problème_complexe>",
-          [{"name": "problème", "type": "string", "required": True, "description": "Énoncé de l'algorithme, du bug subtil ou du problème mathématique"}],
-          "/boost Trouve une solution O(N log K) avec garantie de mémoire bornée pour fusionner 1000 flux de données triés en parallèle.",
+add_entry("agy-boost", "Ultra-Deep Logical Reasoning (/boost)", "/boost", "antigravity", "Workflow & Agents", "Slash Command",
+          "Maximizes internal cognitive compute for complex algorithmic proofs and security audits.",
+          "Unlocks extensive Chain-of-Thought reasoning with formal recursion: Deep Thought -> Self-Critique -> Refinement before outputting production code.",
+          "/boost <complex_problem>",
+          [{"name": "problem", "type": "string", "required": True, "description": "Complex algorithmic challenge, subtle bug, or mathematical problem"}],
+          "/boost Find an O(N log K) bounded memory solution to merge 1000 sorted data streams concurrently.",
           "Zap", "from-purple-500 to-pink-600", ["reasoning", "deep-thinking", "boost", "algorithm", "audit"], "Expert", "Google Antigravity", True)
 
-add_entry("agy-teamwork-preview", "Orchestration Multi-Agents (/teamwork-preview)", "/teamwork-preview", "antigravity", "Workflow & Agents", "Slash Command",
-          "Répartit une grande tâche entre plusieurs agents autonomes en parallèle.",
-          "Instancie et coordonne une équipe de sous-agents spécialisés (Recherche, Frontend, Backend, QA) qui échangent par messages pour converger vers la solution globale.",
-          "/teamwork-preview <projet> [--agents front,back,test,docs]",
-          [{"name": "projet", "type": "string", "required": True, "description": "Description du projet global"},
-           {"name": "--agents", "type": "string", "required": False, "description": "Liste des sous-agents à mobiliser"}],
-          "/teamwork-preview Créer un clone de Linear avec dashboard frontend, API Fastify et base Supabase.",
+add_entry("agy-teamwork-preview", "Multi-Agent Swarm Orchestration (/teamwork-preview)", "/teamwork-preview", "antigravity", "Workflow & Agents", "Slash Command",
+          "Spawns and coordinates specialized autonomous subagents working concurrently on large projects.",
+          "Automatically divides large deliverables between research, frontend, backend, testing, and documentation agents communicating via structured message passing.",
+          "/teamwork-preview <project> [--agents front,back,test,docs]",
+          [{"name": "project", "type": "string", "required": True, "description": "High-level project scope and requirements"},
+           {"name": "--agents", "type": "string", "required": False, "description": "Comma-separated subagent roles"}],
+          "/teamwork-preview Build a real-time Linear clone with React frontend, Fastify API, and Supabase database.",
           "Users", "from-violet-500 to-purple-600", ["multi-agent", "subagents", "collaboration", "parallel"], "Expert", "Google Antigravity", True)
 
-add_entry("agy-learn", "Persistance des Préférences (/learn)", "/learn", "antigravity", "Workflow & Agents", "Slash Command",
-          "Enregistre des règles de style et directives dans la mémoire globale de l'agent.",
-          "Analyse les remarques ou corrections fournies par l'utilisateur et les inscrit dans les fichiers de configuration système pour qu'elles s'appliquent à tous les projets futurs.",
-          "/learn <règle_ou_convention>",
-          [{"name": "règle", "type": "string", "required": True, "description": "Convention de codage, préférence de framework ou directive"}],
-          "/learn Utilise toujours les imports explicites avec extensions .js dans les projets ESM et préfère Zod pour valider les payloads.",
-          "BookOpen", "from-rose-500 to-pink-600", ["memory", "learn", "rules", "preferences", "customization"], "Débutant", "Google Antigravity", True)
+add_entry("agy-learn", "Persistent Memory & Rule Learning (/learn)", "/learn", "antigravity", "Workflow & Agents", "Slash Command",
+          "Persists user preferences, coding styles, and architectural standards across all future sessions.",
+          "Extracts corrections, conventions, and rules provided during dialogue and writes them permanently into global Antigravity configuration files.",
+          "/learn <rule_or_convention>",
+          [{"name": "rule", "type": "string", "required": True, "description": "Coding convention, framework preference, or architectural invariant"}],
+          "/learn Always use explicit .js file extensions in ESM TypeScript projects and enforce Zod validation schemas.",
+          "BookOpen", "from-rose-500 to-pink-600", ["memory", "learn", "rules", "preferences", "customization"], "Beginner", "Google Antigravity", True)
 
-# Antigravity Skills & GCP Tools
-skills_gcp = [
-    ("generative_ui", "Génération d'UI Interactive", "generative_ui", "Web & Frontend", "Rendu dynamique de widgets interactifs, formulaires et graphiques inline."),
-    ("accidental-data-loss-prevention", "Garde-fou Anti-Destruction de Données", "accidental-data-loss-prevention", "Security & Auth", "Intercepte les commandes DROP, TRUNCATE ou suppressions massives Cloud."),
-    ("bigquery-sql", "Optimiseur de Requêtes BigQuery SQL", "bigquery-sql", "Data & Analytics", "Optimisation de partitionnement, clustering, CTEs et réduction drastique de coût."),
-    ("bigquery-ai-ml", "BigQuery ML & Modélisation In-Database", "bigquery-ai-ml", "Data & Analytics", "Entraînement et inférence de modèles ML directement en SQL sur BigQuery."),
-    ("bigquery-bigframes", "BigFrames Python Analytics", "bigquery-bigframes", "Data & Analytics", "API Pandas / Scikit-learn distribuée et accélérée par BigQuery."),
-    ("bigquery-graph", "BigQuery Graph & GQL Topologies", "bigquery-graph", "Data & Analytics", "Requêtage de graphes de connaissances et détection de fraudes en GQL."),
-    ("discovering-gcp-data-assets", "Explorateur d'Assets de Données GCP", "discovering-gcp-data-assets", "Data & Analytics", "Cartographie et indexation intelligente des datasets, tables et vues Google Cloud."),
-    ("dataform-bigquery", "Pipelines ELT Dataform & SQLX", "dataform-bigquery", "Data & Analytics", "Génération de pipelines de transformation SQLX modulaires avec tests d'assertions."),
-    ("dbt-bigquery", "Expertise dbt Core sur BigQuery", "dbt-bigquery", "Data & Analytics", "Modèles dbt incrémentaux, macros Jinja et documentation de lineage."),
-    ("gcp-dataflow", "Pipelines Apache Beam sur Dataflow", "gcp-dataflow", "DevOps & Cloud", "Pipelines streaming et batch haute performance avec autoscaling dynamique."),
-    ("gcp-spark", "Apache Spark sur Dataproc Serverless", "gcp-spark", "Data & Analytics", "Exécution de jobs PySpark et intégration BigLake Iceberg."),
-    ("gcp-composer-troubleshooting", "Diagnostic Cloud Composer & Airflow", "gcp-composer-troubleshooting", "DevOps & Cloud", "Root Cause Analysis (RCA) et résolution automatique de pannes de DAGs."),
-    ("gcp-managed-airflow-dag-authoring", "Création de DAGs Airflow 2 & 3", "gcp-managed-airflow-dag-authoring", "DevOps & Cloud", "Conception de DAGs idempotents, TaskFlow API et gestion des secrets."),
-    ("gcp-pipeline-orchestration", "Orchestration Unifiée GCP", "gcp-pipeline-orchestration", "DevOps & Cloud", "Coordination de pipelines hybrides dbt, Spark, SQL et scripts Python."),
-    ("google-cloud-storage-basics", "Gestion Avancée Cloud Storage GCS", "google-cloud-storage-basics", "DevOps & Cloud", "Gestion des cycles de vie, CMEK, IAM conditionnel et URLs signées."),
-    ("gcs-security-assessment", "Audit de Sécurité SAIF GCS", "gcs-security-assessment", "Security & Auth", "Scan de conformité sécurité, détection de fuites publiques et verrouillage."),
-    ("gcloud-auth-verification", "Vérificateur d'Auth ADC & gcloud", "gcloud-auth-verification", "DevOps & Cloud", "Résolution automatique des erreurs de token OAuth et credentials de service account."),
-    ("firebase-basics", "Firebase CLI & Setup Environnement", "firebase-basics", "DevOps & Cloud", "Initialisation et synchronisation des configurations multi-environnements."),
-    ("firebase-firestore", "Modélisation NoSQL Cloud Firestore", "firebase-firestore", "Data & Analytics", "Architecture de collections, index composites et règles de sécurité strictes."),
-    ("firebase-auth-basics", "Authentification Multi-Facteurs Firebase", "firebase-auth-basics", "Security & Auth", "Flux OAuth, sessions sécurisées, Custom Claims et protection anti-bruteforce."),
-    ("firebase-app-hosting-basics", "Déploiement Firebase App Hosting", "firebase-app-hosting-basics", "DevOps & Cloud", "Déploiement continu Next.js / Angular avec backend SSR et secrets chiffrés."),
-    ("firebase-security-rules-auditor", "Auditeur de Sécurité Firestore Rules", "firebase-security-rules-auditor", "Security & Auth", "Détection automatique de failles de lecture/écriture non restreintes."),
-    ("firebase-data-connect", "Firebase Data Connect & PostgreSQL", "firebase-data-connect", "Data & Analytics", "API GraphQL et requêtes typées sur base relationnelle managée."),
-    ("firebase-crashlytics", "Crashlytics & Diagnostic d'Erreurs Mobiles", "firebase-crashlytics", "Debugging & Tests", "Agrégation des stack traces, logs personnalisés et métriques de stabilité."),
-    ("dart-add-unit-test", "Générateur de Tests Unitaires Dart", "dart-add-unit-test", "Debugging & Tests", "Tests unitaires complets avec package:test et assertions avancées."),
-    ("dart-fix-runtime-errors", "Résolution d'Erreurs Runtime Dart", "dart-fix-runtime-errors", "Debugging & Tests", "Analyse de stack traces en direct et application de patchs par hot reload."),
-    ("dart-run-static-analysis", "Analyse Statique & Lints Dart", "dart-run-static-analysis", "Code & Refactor", "Vérification de code, correction automatique dart fix et conformité Pedantic."),
-    ("flutter-apply-architecture-best-practices", "Architecture Clean Flutter Pro", "flutter-apply-architecture-best-practices", "Architecture & System", "Découpage en couches UI/Domain/Data avec Riverpod ou Bloc."),
-    ("flutter-fix-layout-issues", "Correcteur d'Overflows Flutter RenderFlex", "flutter-fix-layout-issues", "Debugging & Tests", "Résolution des erreurs de contraintes non bornées et débordements d'écran."),
-    ("flutter-add-widget-preview", "Previews Interactives de Widgets Flutter", "flutter-add-widget-preview", "Web & Frontend", "Création de previews modulaires pour tests visuels rapides."),
-    ("flutter-setup-declarative-routing", "Routage Déclaratif GoRouter Flutter", "flutter-setup-declarative-routing", "Web & Frontend", "Configuration de deep linking, redirection d'auth et navigation web/mobile."),
-    ("gemini-api-dev", "SDK Google GenAI & Gemini 2.5/3 Pro", "gemini-api-dev", "AI & Multimodal", "Intégration d'appels multimodaux, function calling et formats structurés JSON."),
-    ("gemini-live-api-dev", "Streaming Bidirectionnel Gemini Live", "gemini-live-api-dev", "AI & Multimodal", "Audio temps réel, faible latence et détection vocale VAD native."),
-    ("gemini-omni-flash-api", "Édition & Génération Vidéo Omni Flash", "gemini-omni-flash-api", "AI & Multimodal", "Génération et retouche vidéo assistée par IA avec continuité temporelle."),
-    ("modern-web-guidance", "Modern Web Guidance & Standards 2026", "modern-web-guidance", "Web & Frontend", "CSS Subgrid, Popover API, View Transitions et WebAssembly."),
-    ("ui-ux-pro-max", "Design System & Micro-Interactions Pro Max", "ui-ux-pro-max", "Web & Frontend", "Composants accessibles WCAG AAA, design responsive et animations fluides."),
-    ("nextjs-best-practices", "Next.js App Router & Server Actions", "nextjs-best-practices", "Web & Frontend", "RSC, Suspense, caching granulaire et formulaires sans JS client."),
-    ("supabase-postgres-pro", "Supabase & Postgres RLS Master", "supabase-postgres-pro", "Data & Analytics", "Politiques RLS, migrations SQL sécurisées et Realtime WebSockets."),
-    ("test-automation-pro", "Automatisation de Tests Vitest / Playwright", "test-automation-pro", "Debugging & Tests", "Framework E2E, mock réseau MSW et couverture de code > 95%."),
-    ("cloudflare-workers-edge", "Architecture Edge Cloudflare Workers", "cloudflare-workers-edge", "DevOps & Cloud", "Microservices serverless distribués, D1 SQL et Vectorize."),
-    ("graphify", "Graphe de Connaissances de Codebase", "graphify", "Architecture & System", "Cartographie AST, analyse des dépendances croisées et détection de cycles."),
-    ("memory-leak-debugging", "Détection de Fuites Mémoire JS / Node", "memory-leak-debugging", "Debugging & Tests", "Analyse de Heap Snapshots, rétention d'objets et closures orphelines."),
-    ("debug-optimize-lcp", "Optimisation Largest Contentful Paint (LCP)", "debug-optimize-lcp", "Web & Frontend", "Priorisation de chargement d'images hero, fetchpriority et critical CSS."),
-    ("a11y-debugging", "Audit d'Accessibilité A11y & ARIA", "a11y-debugging", "Web & Frontend", "Contraste des couleurs, navigation clavier, focus traps et screen readers.")
+# Antigravity Skills & GCP Tools in English
+skills_gcp_en = [
+    ("generative_ui", "Generative UI Engine", "generative_ui", "Web & Frontend", "Renders rich interactive HTML/JS widgets, charts, and standalone live prototypes inline."),
+    ("accidental-data-loss-prevention", "Data Loss Prevention Guardrail", "accidental-data-loss-prevention", "Security & Auth", "Intercepts destructive DROP, TRUNCATE, rm -rf, or bulk cloud deletion commands."),
+    ("bigquery-sql", "BigQuery SQL Query Optimizer", "bigquery-sql", "Data & Analytics", "Optimizes partition pruning, clustering keys, CTEs, and drastically cuts query scan costs."),
+    ("bigquery-ai-ml", "BigQuery ML & In-Database AI", "bigquery-ai-ml", "Data & Analytics", "Trains and evaluates forecasting (ARIMA_PLUS), classification, and embedding models directly in SQL."),
+    ("bigquery-bigframes", "BigFrames Python Analytics", "bigquery-bigframes", "Data & Analytics", "Distributed Pandas and Scikit-Learn data science API powered by BigQuery computing."),
+    ("bigquery-graph", "BigQuery Graph & GQL Topologies", "bigquery-graph", "Data & Analytics", "Queries knowledge graphs, social networks, and fraud detection topologies using ISO GQL standard."),
+    ("discovering-gcp-data-assets", "Google Cloud Asset Discovery", "discovering-gcp-data-assets", "Data & Analytics", "Intelligently indexes datasets, tables, BigLake catalogs, and Spanner instances in GCP."),
+    ("dataform-bigquery", "Dataform & SQLX Pipeline Studio", "dataform-bigquery", "Data & Analytics", "Generates modular SQLX ELT pipelines with built-in data quality assertion tests."),
+    ("dbt-bigquery", "dbt Core BigQuery Modeling", "dbt-bigquery", "Data & Analytics", "Engineers incremental dbt models, Jinja macros, and lineage documentation on BigQuery."),
+    ("gcp-dataflow", "Apache Beam on Cloud Dataflow", "gcp-dataflow", "DevOps & Cloud", "Authors, builds, and troubleshoots high-throughput streaming and batch Dataflow pipelines."),
+    ("gcp-spark", "Apache Spark on Serverless Dataproc", "gcp-spark", "Data & Analytics", "Executes scalable PySpark jobs and reads/writes BigLake Iceberg REST catalogs."),
+    ("gcp-composer-troubleshooting", "Cloud Composer & Airflow RCA", "gcp-composer-troubleshooting", "DevOps & Cloud", "Performs deep Root Cause Analysis (RCA) and resolves failed Airflow DAG tasks."),
+    ("gcp-managed-airflow-dag-authoring", "Airflow 2 & 3 DAG Authoring", "gcp-managed-airflow-dag-authoring", "DevOps & Cloud", "Designs idempotent TaskFlow DAGs, secret management, and sensor timeout guards."),
+    ("gcp-pipeline-orchestration", "Unified GCP Pipeline Orchestrator", "gcp-pipeline-orchestration", "DevOps & Cloud", "Coordinates hybrid dbt, Spark, SQL, and Python script workflows across Google Cloud."),
+    ("google-cloud-storage-basics", "Cloud Storage (GCS) Architecture", "google-cloud-storage-basics", "DevOps & Cloud", "Configures bucket lifecycles, soft-delete, CMEK encryption, and signed upload URLs."),
+    ("gcs-security-assessment", "GCS Security & SAIF Compliance", "gcs-security-assessment", "Security & Auth", "Audits bucket IAM policies, public read prevention, and secure cloud storage postures."),
+    ("gcloud-auth-verification", "GCP ADC & Auth Verification", "gcloud-auth-verification", "DevOps & Cloud", "Automatically resolves missing Application Default Credentials and OAuth token errors."),
+    ("firebase-basics", "Firebase CLI & Multi-Env Setup", "firebase-basics", "DevOps & Cloud", "Initializes, provisions, and synchronizes Firebase staging and production configurations."),
+    ("firebase-firestore", "Cloud Firestore NoSQL Architect", "firebase-firestore", "Data & Analytics", "Designs scalable subcollection schemas, composite indexes, and strict security rules."),
+    ("firebase-auth-basics", "Firebase Multi-Factor Authentication", "firebase-auth-basics", "Security & Auth", "Implements OAuth login flows, persistent sessions, custom JWT claims, and rate limits."),
+    ("firebase-app-hosting-basics", "Firebase App Hosting Next.js SSR", "firebase-app-hosting-basics", "DevOps & Cloud", "Deploys Next.js App Router and Angular full-stack apps with server-side rendering."),
+    ("firebase-security-rules-auditor", "Firestore Rules Security Auditor", "firebase-security-rules-auditor", "Security & Auth", "Detects unauthenticated read/write vulnerabilities and validates RBAC boundaries."),
+    ("firebase-data-connect", "Firebase Data Connect & PostgreSQL", "firebase-data-connect", "Data & Analytics", "Builds type-safe GraphQL APIs on managed Cloud SQL PostgreSQL databases."),
+    ("firebase-crashlytics", "Crashlytics Diagnostic Suite", "firebase-crashlytics", "Debugging & Tests", "Aggregates crash reports, custom logging breadcrumbs, and real-time app stability stats."),
+    ("dart-add-unit-test", "Dart Unit Test Generator", "dart-add-unit-test", "Debugging & Tests", "Generates comprehensive unit test suites using package:test and advanced assertions."),
+    ("dart-fix-runtime-errors", "Dart Runtime Error Resolver", "dart-fix-runtime-errors", "Debugging & Tests", "Fetches stack traces, pinpoints failing code lines, and applies hot-reload fixes."),
+    ("dart-run-static-analysis", "Dart Static Analysis & Lints", "dart-run-static-analysis", "Code & Refactor", "Runs dart analyze, executes automated dart fix, and enforces lint rules."),
+    ("flutter-apply-architecture-best-practices", "Flutter Clean Architecture Pro", "flutter-apply-architecture-best-practices", "Architecture & System", "Structures modular UI/Domain/Data layer patterns with Riverpod or BLoC."),
+    ("flutter-fix-layout-issues", "Flutter RenderFlex Overflow Fixer", "flutter-fix-layout-issues", "Debugging & Tests", "Fixes unbounded height constraints, overflow pixels, and viewport layout crashes."),
+    ("flutter-add-widget-preview", "Interactive Flutter Widget Previews", "flutter-add-widget-preview", "Web & Frontend", "Creates isolated previews.dart components for rapid responsive UI validation."),
+    ("flutter-setup-declarative-routing", "Flutter GoRouter Declarative Routing", "flutter-setup-declarative-routing", "Web & Frontend", "Configures deep-linking, auth redirect guards, and declarative routing hierarchies."),
+    ("gemini-api-dev", "Google GenAI SDK & Gemini 2.5/3 Pro", "gemini-api-dev", "AI & Multimodal", "Integrates multimodal calls (audio/video/vision), function calling, and structured JSON output."),
+    ("gemini-live-api-dev", "Gemini Live API & Audio Streaming", "gemini-live-api-dev", "AI & Multimodal", "Builds real-time bidirectional WebSocket streaming with voice activity detection (VAD)."),
+    ("gemini-omni-flash-api", "Gemini Omni Flash Generative Video", "gemini-omni-flash-api", "AI & Multimodal", "Generates and edits video transitions with image-referenced continuity via GenAI SDK."),
+    ("modern-web-guidance", "Modern Web Standards & Core Web Vitals", "modern-web-guidance", "Web & Frontend", "Implements View Transitions, CSS Subgrid, Popover API, and optimizes LCP/INP metrics."),
+    ("ui-ux-pro-max", "Design System & Micro-Interactions Pro", "ui-ux-pro-max", "Web & Frontend", "Engineers WCAG AAA compliant design systems, modern themes, and fluid animations."),
+    ("nextjs-best-practices", "Next.js App Router & Server Actions", "nextjs-best-practices", "Web & Frontend", "Architects React Server Components (RSC), Suspense boundaries, and zero-bundle actions."),
+    ("supabase-postgres-pro", "Supabase & PostgreSQL Mastery", "supabase-postgres-pro", "Data & Analytics", "Writes bulletproof Row Level Security (RLS) policies, triggers, and Realtime streams."),
+    ("test-automation-pro", "Vitest & Playwright Test Automation", "test-automation-pro", "Debugging & Tests", "Full E2E test suites, MSW network mocking, and CI pipeline coverage reporting."),
+    ("cloudflare-workers-edge", "Cloudflare Workers & Edge D1", "cloudflare-workers-edge", "DevOps & Cloud", "Deploys ultra-low-latency serverless microservices with D1 SQL and Vectorize."),
+    ("graphify", "Codebase Knowledge Graph Engine", "graphify", "Architecture & System", "AST parsing, cross-module dependency graphs, and cyclic import detection."),
+    ("memory-leak-debugging", "JS & Node Memory Leak Profiler", "memory-leak-debugging", "Debugging & Tests", "Heap snapshot analysis, orphan closure identification, and garbage collection tuning."),
+    ("debug-optimize-lcp", "Largest Contentful Paint (LCP) Optimizer", "debug-optimize-lcp", "Web & Frontend", "Prioritizes hero image rendering, fetchpriority tags, and eliminates render-blocking CSS."),
+    ("a11y-debugging", "Accessibility & ARIA Audit Suite", "a11y-debugging", "Web & Frontend", "Color contrast auditing, focus traps, screen reader landmarks, and WCAG compliance.")
 ]
 
-for sid, stitle, scomm, scat, sdesc in skills_gcp:
+for sid, stitle, scomm, scat, sdesc in skills_gcp_en:
     add_entry(
         f"agy-{sid}", stitle, scomm, "antigravity", scat, "Skill",
         sdesc,
-        f"Active et applique le skill {stitle} dans l'environnement Antigravity pour résoudre des problématiques ciblées avec des patterns vérifiés.",
-        f"use skill: {scomm} [--option <valeur>]",
-        [{"name": "--option", "type": "string", "required": False, "description": "Paramètre spécifique au skill"}],
+        f"Applies the {stitle} skill in Google Antigravity to solve domain-specific architectural challenges with verified best practices.",
+        f"use skill: {scomm} [--option <value>]",
+        [{"name": "--option", "type": "string", "required": False, "description": "Skill-specific configuration flag"}],
         f"use skill: {scomm} --target src/app --verbose",
         "Sparkles" if "AI" in scat else ("Database" if "Data" in scat else ("Activity" if "Debug" in scat else "Layers")),
         "from-cyan-500 to-blue-600",
         [sid, scomm, scat.lower(), "antigravity", "skill"],
-        "Intermédiaire",
+        "Intermediate",
         "Google Antigravity",
         True
     )
 
-# Bioinformatics & Science AGY Skills
-science_skills = [
-    ("alphafold-database-fetch-and-analyze", "AlphaFold 3D Structure Fetcher", "Science & Bio", "Télécharge et analyse les coordonnées 3D de protéines et scores pLDDT."),
-    ("alphagenome-single-variant-analysis", "AlphaGenome Variant Analysis", "Science & Bio", "Évalue l'impact fonctionnel de mutations génomiques sur l'expression ARN."),
-    ("alphagenome-variant-impact-score", "Score d'Impact de Variant AlphaGenome (AVI)", "Science & Bio", "Calcul de scores d'impact pathogénique sur données VCF."),
-    ("chembl-database", "ChEMBL Bioactive Molecules & Targets", "Science & Bio", "Interroge les affinités médicamenteuses IC50/Ki et structures chimiques."),
-    ("clinical-trials-database", "ClinicalTrials.gov Explorer", "Science & Bio", "Recherche d'essais cliniques par phase, molécule et critères d'inclusion."),
-    ("clinvar-database", "ClinVar Pathogenicity & Clinical Evidence", "Science & Bio", "Classifications de pathogénicité de mutations génétiques humaines."),
-    ("dbsnp-database", "NCBI dbSNP Variant Resolution", "Science & Bio", "Résolution de rsIDs vers coordonnées GRCh38 et fréquences alléliques."),
-    ("ensembl-database", "Ensembl Gene & Transcript API", "Science & Bio", "Extraction de séquences génomiques, exons et prédictions VEP."),
-    ("foldseek-structural-search", "Foldseek 3D Structural Homology", "Science & Bio", "Recherche ultra-rapide de similarités structurales dans PDB et AlphaFold DB."),
-    ("gnomad-database", "gnomAD Allele Frequencies & Constraint", "Science & Bio", "Fréquences de population et scores de tolérance de perte de fonction (pLI)."),
-    ("human-protein-atlas-database", "Human Protein Atlas Expression", "Science & Bio", "Localisation subcellulaire et expression tissulaire de protéines humaines."),
-    ("interpro-database", "InterPro Protein Families & Domains", "Science & Bio", "Identification de domaines fonctionnels Pfam, CDD et motifs structuraux."),
-    ("jaspar-database", "JASPAR Transcription Factor Binding", "Science & Bio", "Matrices de fréquence de position (PFM/PWM) de facteurs de transcription."),
-    ("literature-search-arxiv", "Recherche Scientifique arXiv", "Science & Bio", "Extraction de preprints en mathématiques, physique et intelligence artificielle."),
-    ("literature-search-biorxiv", "Recherche BioRxiv & MedRxiv", "Science & Bio", "Exploration des preprints en sciences de la vie et médecine."),
-    ("literature-search-europepmc", "Europe PMC Full-Text Downloader", "Science & Bio", "Recherche et extraction de textes intégraux d'articles scientifiques."),
-    ("literature-search-openalex", "OpenAlex Scholarly Graph Explorer", "Science & Bio", "Graphe académique d'auteurs, citations, institutions et facteurs d'impact."),
-    ("ncbi-sequence-fetch", "NCBI GenBank / RefSeq Fetcher", "Science & Bio", "Téléchargement direct de séquences FASTA nucléotidiques et peptidiques."),
-    ("openfda-database", "OpenFDA Drug & Adverse Events API", "Science & Bio", "Pharmacovigilance, rappels de médicaments et autorisations 510(k)."),
-    ("opentargets-database", "Open Targets Drug Discovery Platform", "Science & Bio", "Validation génétique de cibles thérapeutiques pour le développement de drogues."),
-    ("pdb-database", "RCSB Protein Data Bank (PDB)", "Science & Bio", "Téléchargement et métadonnées d'expériences de cristallographie et cryo-EM."),
-    ("predictingthepast", "Aeneas / Ithaca Epigraphic AI", "Science & Bio", "Restauration, attribution et datation de textes anciens grecs et latins."),
-    ("protein-sequence-msa", "Clustal Omega Multiple Alignment", "Science & Bio", "Alignement multiple de séquences protéiques pour analyse de conservation."),
-    ("protein-sequence-similarity-search", "MMseqs2 Sequence Similarity Search", "Science & Bio", "Recherche ultra-rapide d'homologie de séquences contre UniProt/NR."),
-    ("pubchem-database", "PubChem Chemical Database", "Science & Bio", "Propriétés physico-chimiques, conformères 3D et bioessais PubChem."),
-    ("pubmed-database", "PubMed Biomedical Literature Search", "Science & Bio", "Recherche d'articles biomédicaux indexés MeSH et essais cliniques."),
-    ("pymol", "PyMOL Molecular Visualization Scripting", "Science & Bio", "Rendu 3D haute définition de complexes protéine-ligand et sites actifs."),
-    ("quickgo-database", "QuickGO Gene Ontology Annotations", "Science & Bio", "Cartographie des processus biologiques, fonctions moléculaires et composants."),
-    ("reactome-database", "Reactome Biological Pathways", "Science & Bio", "Enrichissement de voies métaboliques et signalisation cellulaire."),
-    ("string-database", "STRING Protein-Protein Interactions", "Science & Bio", "Réseaux d'interactions physiques et fonctionnelles entre protéines."),
-    ("ucsc-conservation-and-tfbs", "UCSC Genome Browser Conservation", "Science & Bio", "Scores de conservation phylogénétique phyloP / phastCons."),
-    ("uniprot-database", "UniProt Knowledgebase (UniProtKB)", "Science & Bio", "Annotations fonctionnelles, ontologies GO et isoformes protéiques.")
+# Bioinformatics in English
+science_skills_en = [
+    ("alphafold-database-fetch-and-analyze", "AlphaFold 3D Structure Fetcher", "Science & Bio", "Fetches and analyzes 3D protein structure coordinates and per-residue pLDDT scores."),
+    ("alphagenome-single-variant-analysis", "AlphaGenome Variant Analysis", "Science & Bio", "Evaluates functional mutation impacts on RNA expression and chromatin marks."),
+    ("alphagenome-variant-impact-score", "AlphaGenome Variant Impact (AVI)", "Science & Bio", "Scores pathogenic impact across genomic variants in VCF formats."),
+    ("chembl-database", "ChEMBL Bioactive Molecule Explorer", "Science & Bio", "Queries drug target affinities (IC50/Ki) and bioactive chemical structures."),
+    ("clinical-trials-database", "ClinicalTrials.gov Query Engine", "Science & Bio", "Searches clinical trials by phase, drug molecule, and patient inclusion criteria."),
+    ("clinvar-database", "ClinVar Pathogenicity Evidence", "Science & Bio", "Retrieves clinical evidence rationales and pathogenicity variant classifications."),
+    ("dbsnp-database", "NCBI dbSNP Genomic Variant Mapper", "Science & Bio", "Maps rsIDs to GRCh38 coordinates and population allele frequencies."),
+    ("ensembl-database", "Ensembl Gene & Transcript API", "Science & Bio", "Extracts genomic sequences, exon structures, and Variant Effect Predictor (VEP) calls."),
+    ("foldseek-structural-search", "Foldseek 3D Structural Homology", "Science & Bio", "Ultra-fast structural similarity search across PDB and AlphaFold DB."),
+    ("gnomad-database", "gnomAD Allele Frequency Engine", "Science & Bio", "Queries population allele frequencies and Loss-of-Function intolerance scores (pLI)."),
+    ("human-protein-atlas-database", "Human Protein Atlas Spatial Data", "Science & Bio", "Retrieves subcellular localization and tissue expression for human proteins."),
+    ("interpro-database", "InterPro Protein Family Classifier", "Science & Bio", "Identifies Pfam functional domains, CDD families, and structural motifs."),
+    ("jaspar-database", "JASPAR Transcription Factor Profiles", "Science & Bio", "Queries Position Frequency Matrices (PFM/PWM) for transcription factor binding."),
+    ("literature-search-arxiv", "arXiv Academic Paper Search", "Science & Bio", "Fetches preprints in artificial intelligence, physics, and computer science."),
+    ("literature-search-biorxiv", "bioRxiv & medRxiv Preprints", "Science & Bio", "Discovers latest preprints in genomics, medical science, and biology."),
+    ("literature-search-europepmc", "Europe PMC Full-Text Downloader", "Science & Bio", "Searches biomedical literature and downloads open-access full-text XMLs."),
+    ("literature-search-openalex", "OpenAlex Scholarly Graph Explorer", "Science & Bio", "Queries citation graphs, author bibliometrics, and scientific impact factors."),
+    ("ncbi-sequence-fetch", "NCBI GenBank Sequence Fetcher", "Science & Bio", "Downloads nucleotide and protein sequences directly in standard FASTA format."),
+    ("openfda-database", "OpenFDA Adverse Drug Events API", "Science & Bio", "Explores FDA drug safety reports, recalls, and 510(k) medical device clearances."),
+    ("opentargets-database", "Open Targets Drug Discovery Platform", "Science & Bio", "Validates target-disease genetic associations for therapeutic drug pipelines."),
+    ("pdb-database", "RCSB Protein Data Bank (PDB)", "Science & Bio", "Downloads macromolecular structures determined by X-ray and Cryo-EM experiments."),
+    ("predictingthepast", "Aeneas / Ithaca Epigraphic AI", "Science & Bio", "Restores, attributes, and dates ancient Greek and Latin inscriptions."),
+    ("protein-sequence-msa", "Clustal Omega Multiple Alignment", "Science & Bio", "Performs multiple sequence alignment to identify conserved protein domains."),
+    ("protein-sequence-similarity-search", "MMseqs2 Homology Search", "Science & Bio", "High-speed protein sequence similarity search against UniProtKB."),
+    ("pubchem-database", "PubChem Chemical Database", "Science & Bio", "Retrieves SMILES, 3D conformers, and pharmacological bioactivities."),
+    ("pubmed-database", "PubMed Biomedical Literature Search", "Science & Bio", "Searches NCBI PubMed biomedical research papers and clinical studies."),
+    ("pymol", "PyMOL Molecular Graphics Scripting", "Science & Bio", "Renders publication-ready 3D protein-ligand binding site visualizations."),
+    ("quickgo-database", "QuickGO Gene Ontology Annotations", "Science & Bio", "Maps biological processes, molecular functions, and cellular components."),
+    ("reactome-database", "Reactome Biological Pathways", "Science & Bio", "Performs biological pathway enrichment and cellular signaling cascades."),
+    ("string-database", "STRING Protein Interaction Network", "Science & Bio", "Explores physical and functional protein-protein interaction networks."),
+    ("ucsc-conservation-and-tfbs", "UCSC Conservation & TFBS Scores", "Science & Bio", "Extracts phyloP and phastCons evolutionary conservation scores."),
+    ("uniprot-database", "UniProt Protein Knowledgebase", "Science & Bio", "Fetches functional protein annotations, isoforms, and UniProtKB metadata.")
 ]
 
-for sid, stitle, scat, sdesc in science_skills:
+for sid, stitle, scat, sdesc in science_skills_en:
     add_entry(
         f"agy-{sid}", stitle, sid, "antigravity", scat, "Skill",
         sdesc,
-        f"Interroge et traite les données spécialisées de {stitle} pour les pipelines bio-informatiques et de recherche scientifique.",
-        f"use skill: {sid} --query <terme_ou_id>",
-        [{"name": "--query", "type": "string", "required": True, "description": "Identifiant ou requête scientifique"}],
+        f"Retrieves and analyzes specialized research data from {stitle} for bioinformatics and scientific computing workflows.",
+        f"use skill: {sid} --query <term_or_id>",
+        [{"name": "--query", "type": "string", "required": True, "description": "Target identifier, gene symbol, or accession code"}],
         f"use skill: {sid} --query BRCA1 --limit 5",
         "Cpu", "from-teal-500 to-indigo-600", [sid, "science", "biology", "genomics", "research"],
-        "Intermédiaire", "Bioinformatic Sciences", False
+        "Intermediate", "Bioinformatic Sciences", False
     )
 
-print(f"Antigravity items generated: {len(items)}")
+print(f"Antigravity items: {len(items)}")
 
 # ==============================================================================
-# 2. ANTHROPIC CLAUDE ECOSYSTEM (110 items)
+# 2. ANTHROPIC CLAUDE ECOSYSTEM (110 items) - IN ENGLISH
 # ==============================================================================
 
-claude_commands = [
-    ("/bug", "Signalement de Bug Claude Code", "Envoie un rapport de diagnostic avec logs d'erreur à l'équipe Claude Code.", "Debugging & Tests", "Slash Command", "Intermédiaire"),
-    ("/clear", "Nettoyage du Contexte Session", "Efface l'historique conversationnel de la session pour libérer la mémoire vive.", "Workflow & Agents", "Slash Command", "Débutant"),
-    ("/compact", "Compression Intelligente du Contexte", "Résume l'historique de la session pour réduire la consommation de tokens tout en préservant les décisions clés.", "Workflow & Agents", "Slash Command", "Intermédiaire"),
-    ("/config", "Configuration Interactive Claude Code", "Affiche et modifie les paramètres globaux (modèle par défaut, clés API, permissions).", "Architecture & System", "Slash Command", "Débutant"),
-    ("/cost", "Suivi des Coûts & Jetons", "Affiche la consommation exacte en tokens d'entrée, sortie et cache ainsi que le coût estimé en USD.", "Data & Analytics", "Slash Command", "Débutant"),
-    ("/doctor", "Diagnostic Santé de l'Environnement", "Vérifie l'intégrité de Node, Git, MCP servers, clés d'API et permissions du shell.", "Debugging & Tests", "Slash Command", "Débutant"),
-    ("/exit", "Fermeture Propre de la Session", "Sauvegarde l'état courant et quitte l'application Claude Code en toute sécurité.", "Workflow & Agents", "Slash Command", "Débutant"),
-    ("/help", "Manuel d'Aide & Index des Commandes", "Liste toutes les commandes slash disponibles avec syntaxe et exemples pratiques.", "Workflow & Agents", "Slash Command", "Débutant"),
-    ("/init", "Initialisation CLAUDE.md du Projet", "Scanne la codebase et génère un fichier CLAUDE.md exhaustif avec commandes de build et conventions.", "Architecture & System", "Slash Command", "Débutant"),
-    ("/login", "Authentification Anthropic OAuth", "Connecte le compte Anthropic Console ou Pro/Team via navigateur web sécurisé.", "Security & Auth", "Slash Command", "Débutant"),
-    ("/logout", "Déconnexion de Session", "Supprime les tokens d'accès locaux pour sécuriser le poste de travail.", "Security & Auth", "Slash Command", "Débutant"),
-    ("/memory", "Inspection de la Mémoire Persistante", "Affiche les faits mémorisés et règles personnalisées stockées dans ~/.claude/memory.", "Workflow & Agents", "Slash Command", "Intermédiaire"),
-    ("/model", "Sélecteur de Modèle Claude", "Bascule dynamiquement entre Claude 3.7 Sonnet, Claude 3.5 Haiku ou Opus avec ou sans thinking.", "Workflow & Agents", "Slash Command", "Débutant"),
-    ("/permissions", "Gestion des Droits d'Exécution", "Affiche et révoque les autorisations accordées aux outils shell et modifications de fichiers.", "Security & Auth", "Slash Command", "Intermédiaire"),
-    ("/pr_comments", "Import des Commentaires de Pull Request", "Récupère les commentaires de code d'une PR GitHub pour y répondre ou appliquer les correctifs demandés.", "Code & Refactor", "Slash Command", "Intermédiaire"),
-    ("/review", "Revue de Code Approfondie", "Audite les modifications Git staged ou non commitées et signale les bugs potentiels et failles de sécurité.", "Code & Refactor", "Slash Command", "Intermédiaire"),
-    ("/search", "Recherche Hybride dans la Base de Code", "Combine recherche lexicale et sémantique pour localiser les symboles et dépendances.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/stats", "Statistiques de Performance de Session", "Affiche la durée, le nombre de modifications de fichiers et le taux de succès des commandes exécutées.", "Data & Analytics", "Slash Command", "Débutant"),
-    ("/status", "Statut du Dépôt & Contexte Actuel", "Affiche la branche Git active, les fichiers modifiés et l'état des sous-systèmes.", "Workflow & Agents", "Slash Command", "Débutant"),
-    ("/summary", "Synthèse des Changements Effectués", "Rédige un récapitulatif clair de toutes les modifications apportées depuis le début de la tâche.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/terminal-setup", "Installation des Complétions Shell", "Configure l'auto-complétion Tab pour zsh, bash et fish shell.", "DevOps & Cloud", "Slash Command", "Débutant"),
-    ("/test", "Exécution des Tests Unitaires", "Lance la suite de tests du projet et analyse les échecs éventuels pour proposer une correction immédiate.", "Debugging & Tests", "Slash Command", "Débutant"),
-    ("/update", "Mise à Jour de Claude Code CLI", "Télécharge et installe la dernière version officielle de Claude Code via npm/brew.", "DevOps & Cloud", "Slash Command", "Débutant"),
-    ("/verbose", "Bascule du Mode Verbeux / Debug", "Active l'affichage détaillé des traces d'appels d'outils, payloads JSON et timings.", "Debugging & Tests", "Slash Command", "Intermédiaire"),
-    ("/version", "Affichage de la Version", "Vérifie le numéro de build et le commit de la version actuelle.", "Workflow & Agents", "Slash Command", "Débutant"),
-    ("/workspace", "Gestion des Espaces de Travail Multi-Dépôts", "Permet d'ajouter ou basculer entre plusieurs dossiers racines dans une même session.", "Architecture & System", "Slash Command", "Intermédiaire"),
-    ("/diff", "Comparateur Visuel de Diff Git", "Affiche un diff syntaxique coloré des modifications récentes avant validation.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/commit", "Générateur de Commit Sémantique", "Analyse les fichiers staged et produit un message conforme aux Conventional Commits.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/branch", "Création de Branche de Fonctionnalité", "Crée et bascule sur une nouvelle branche Git nommée selon les standards de l'équipe.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/stash", "Gestion Rapide du Git Stash", "Met en réserve les modifications en cours pour tester une branche propre sans perdre son travail.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/patch", "Création et Application de Fichier .patch", "Exporte les modifications actuelles sous forme de fichier patch standard ou applique un diff externe.", "Code & Refactor", "Slash Command", "Intermédiaire"),
-    ("/rebase", "Assistant de Rebase Git Interactif", "Aide à résoudre les conflits de rebase étape par étape sans écraser de commit.", "Code & Refactor", "Slash Command", "Expert"),
-    ("/undo", "Annulation de la Dernière Modification", "Restaure les fichiers modifiés lors du dernier tour de conversation en utilisant les snapshots Git.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/format", "Formatage Global du Codebase", "Exécute Prettier, Biome ou Black sur l'ensemble des fichiers modifiés.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/lint", "Vérification des Règles Linter", "Exécute ESLint / Ruff / Clippy et corrige automatiquement les alertes mineures.", "Code & Refactor", "Slash Command", "Débutant"),
-    ("/types", "Contrôle Strict des Types TypeScript", "Lance tsc --noEmit et résout les incohérences de signatures de fonctions et types génériques.", "Code & Refactor", "Slash Command", "Intermédiaire"),
-    ("/dead-code", "Détecteur de Code Mort & Fonctions Inutilisées", "Analyse le graphe d'importation pour repérer les exports, variables et dépendances orphelines.", "Code & Refactor", "Slash Command", "Intermédiaire"),
-    ("/refactor", "Refactoring Guidé de Fonction ou Module", "Restructure un bloc de code pour améliorer la lisibilité, réduire la complexité cyclomatique et respecter SOLID.", "Code & Refactor", "Slash Command", "Intermédiaire"),
-    ("/security", "Scan de Vulnérabilités & Dépendances", "Exécute npm audit / snyk / osv-scanner et détecte les failles CVE critiques.", "Security & Auth", "Slash Command", "Intermédiaire"),
-    ("/secrets-scan", "Détection de Clés & Secrets Hardcodés", "Vérifie qu'aucun token d'API, mot de passe ou certificat privé ne figure dans les fichiers sources.", "Security & Auth", "Slash Command", "Intermédiaire"),
-    ("/dockerize", "Génération de Dockerfile & Compose Multi-Stage", "Produit un Dockerfile léger, optimisé en cache et sécurisé (non-root user).", "DevOps & Cloud", "Slash Command", "Intermédiaire"),
-    ("/k8s-manifest", "Génération de Manifestes Kubernetes", "Crée les fichiers Deployment, Service, Ingress et ConfigMap adaptés à l'application.", "DevOps & Cloud", "Slash Command", "Expert"),
-    ("/ci-pipeline", "Génération de Workflow GitHub Actions", "Configure un pipeline CI/CD complet avec build, tests parallèles, caching et déploiement.", "DevOps & Cloud", "Slash Command", "Intermédiaire"),
-    ("/env-template", "Synchronisation de .env.example", "Génère un fichier .env.example documenté à partir des variables utilisées dans le code.", "DevOps & Cloud", "Slash Command", "Débutant"),
-    ("/readme-gen", "Génération de README.md Professionnel", "Rédige une documentation d'accueil complète avec badges, guide d'installation et aperçu d'architecture.", "Architecture & System", "Slash Command", "Débutant"),
-    ("/changelog-gen", "Générateur Automatique de CHANGELOG.md", "Compile les commits récents en sections Features, Bug Fixes, Breaking Changes selon SemVer.", "Architecture & System", "Slash Command", "Débutant"),
-    ("/openapi-spec", "Génération de Spécification OpenAPI v3.1", "Extrait les routes et modèles de l'API pour générer le fichier swagger/openapi.json.", "Architecture & System", "Slash Command", "Intermédiaire"),
-    ("/mock-api", "Création de Serveur de Mock MSW / JSON-Server", "Génère des handlers de fausses données réalistes pour tester le frontend en autonomie.", "Web & Frontend", "Slash Command", "Intermédiaire"),
-    ("/bench", "Benchmark de Performance de Fonction", "Mesure les opérations par seconde et la consommation mémoire d'une fonction critique.", "Debugging & Tests", "Slash Command", "Expert"),
-    ("/bundle-size", "Analyseur de Taille de Bundle Webpack / Vite", "Identifie les dépendances trop lourdes et suggère des alternatives légères ou du code-splitting.", "Web & Frontend", "Slash Command", "Intermédiaire")
+claude_commands_en = [
+    ("/bug", "Claude Code Bug Reporter", "Submits a detailed diagnostic report with execution logs to the Claude Code engineering team.", "Debugging & Tests", "Slash Command", "Intermediate"),
+    ("/clear", "Session Context Reset", "Clears the active conversation history to free memory and eliminate accumulated distraction.", "Workflow & Agents", "Slash Command", "Beginner"),
+    ("/compact", "Smart Context Compression", "Condenses conversation history to reduce token consumption while preserving critical architectural decisions.", "Workflow & Agents", "Slash Command", "Intermediate"),
+    ("/config", "Interactive Settings Configuration", "Inspects and updates global parameters, default models, API keys, and tool permissions.", "Architecture & System", "Slash Command", "Beginner"),
+    ("/cost", "Token & Cost Tracker", "Displays real-time breakdown of input, output, and cached tokens with estimated USD spend.", "Data & Analytics", "Slash Command", "Beginner"),
+    ("/doctor", "Environment Health Check", "Validates the integrity of Node, Git, MCP servers, API authentication, and shell permissions.", "Debugging & Tests", "Slash Command", "Beginner"),
+    ("/exit", "Clean Session Termination", "Saves the current session state and cleanly exits the Claude Code CLI interface.", "Workflow & Agents", "Slash Command", "Beginner"),
+    ("/help", "Command Reference Manual", "Lists all available slash commands with formal syntax options and real-world prompt examples.", "Workflow & Agents", "Slash Command", "Beginner"),
+    ("/init", "Project CLAUDE.md Initialization", "Scans the codebase to author a comprehensive CLAUDE.md file with build commands and standards.", "Architecture & System", "Slash Command", "Beginner"),
+    ("/login", "Anthropic OAuth Authentication", "Authenticates Claude Code via secure browser OAuth with Anthropic Console or Pro/Team accounts.", "Security & Auth", "Slash Command", "Beginner"),
+    ("/logout", "Session Disconnect", "Revokes and deletes local session authentication tokens to secure the workstation.", "Security & Auth", "Slash Command", "Beginner"),
+    ("/memory", "Persistent Memory Inspection", "Views and manages saved facts, developer preferences, and rules stored in ~/.claude/memory.", "Workflow & Agents", "Slash Command", "Intermediate"),
+    ("/model", "Model Switcher", "Dynamically switches between Claude 3.7 Sonnet, Claude 3.5 Haiku, and Opus with extended thinking.", "Workflow & Agents", "Slash Command", "Beginner"),
+    ("/permissions", "Tool Permission Manager", "Inspects, grants, and revokes execution permissions for shell commands and file modifications.", "Security & Auth", "Slash Command", "Intermediate"),
+    ("/pr_comments", "GitHub PR Comments Importer", "Fetches Pull Request review comments and applies requested code changes iteratively.", "Code & Refactor", "Slash Command", "Intermediate"),
+    ("/review", "Deep Codebase Review", "Audits staged or unstaged Git diffs to detect potential bugs, edge cases, and security vulnerabilities.", "Code & Refactor", "Slash Command", "Intermediate"),
+    ("/search", "Hybrid Codebase Search", "Combines lexical keyword matching with semantic vector search across the entire repository.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/stats", "Session Performance Analytics", "Displays session duration, files edited, and success rates for executed CLI commands.", "Data & Analytics", "Slash Command", "Beginner"),
+    ("/status", "Repository & Context Status", "Reports the active Git branch, uncommitted files, and active background subprocesses.", "Workflow & Agents", "Slash Command", "Beginner"),
+    ("/summary", "Change Synthesis Generator", "Drafts an executive summary of all modifications, refactors, and test results from the session.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/terminal-setup", "Shell Auto-Completion Setup", "Configures tab auto-completion for zsh, bash, and fish shell environments.", "DevOps & Cloud", "Slash Command", "Beginner"),
+    ("/test", "Automated Test Runner", "Executes the project's test suite, analyzes failures, and generates immediate fix patches.", "Debugging & Tests", "Slash Command", "Beginner"),
+    ("/update", "CLI Auto-Updater", "Checks for, downloads, and installs the latest official Claude Code CLI release.", "DevOps & Cloud", "Slash Command", "Beginner"),
+    ("/verbose", "Verbose Debug Logging Toggle", "Enables granular debug logging for tool calls, MCP JSON payloads, and network timings.", "Debugging & Tests", "Slash Command", "Intermediate"),
+    ("/version", "Version & Build Inspector", "Displays the current CLI version number, build timestamp, and git commit SHA.", "Workflow & Agents", "Slash Command", "Beginner"),
+    ("/workspace", "Multi-Root Workspace Manager", "Manages multiple project directories and workspaces within a single unified session.", "Architecture & System", "Slash Command", "Intermediate"),
+    ("/diff", "Colorized Git Diff Viewer", "Presents syntax-highlighted side-by-side diffs of uncommitted changes before saving.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/commit", "Conventional Commit Generator", "Analyzes staged changes and authors semantic commit messages conforming to standards.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/branch", "Feature Branch Creator", "Creates and switches to a standardized Git feature branch matching team naming conventions.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/stash", "Git Stash Quick Manager", "Stashes current working directory changes to test clean branches without losing work.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/patch", "Patch File Creator & Applier", "Exports changes as standard .patch files or applies external unified diff patches.", "Code & Refactor", "Slash Command", "Intermediate"),
+    ("/rebase", "Interactive Rebase Assistant", "Guides conflict resolution step-by-step during interactive git rebase workflows.", "Code & Refactor", "Slash Command", "Expert"),
+    ("/undo", "Last Modification Reverter", "Restores modified files to their previous state using automatic Git snapshots.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/format", "Global Codebase Formatter", "Runs Prettier, Biome, or Black formatting across all modified files in the project.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/lint", "Linter Runner & Auto-Fix", "Executes ESLint, Ruff, or Clippy and automatically resolves minor syntax warnings.", "Code & Refactor", "Slash Command", "Beginner"),
+    ("/types", "Strict TypeScript Type-Checker", "Executes tsc --noEmit and resolves generic signature mismatches and missing types.", "Code & Refactor", "Slash Command", "Intermediate"),
+    ("/dead-code", "Dead Code & Unused Export Detector", "Analyzes the import dependency tree to eliminate orphan functions, variables, and packages.", "Code & Refactor", "Slash Command", "Intermediate"),
+    ("/refactor", "Guided Code Refactoring", "Restructures complex functions to reduce cyclomatic complexity and adhere to SOLID.", "Code & Refactor", "Slash Command", "Intermediate"),
+    ("/security", "Dependency Vulnerability Scanner", "Runs audit engines (npm audit, Snyk, OSV) to detect high-severity CVE vulnerabilities.", "Security & Auth", "Slash Command", "Intermediate"),
+    ("/secrets-scan", "Hardcoded Secrets Detector", "Verifies no API keys, private certificates, or database passwords exist in source files.", "Security & Auth", "Slash Command", "Intermediate"),
+    ("/dockerize", "Multi-Stage Dockerfile Generator", "Creates lightweight, cache-optimized, and non-root secure container configurations.", "DevOps & Cloud", "Slash Command", "Intermediate"),
+    ("/k8s-manifest", "Kubernetes Manifest Generator", "Generates Deployment, Service, Ingress, and ConfigMap YAMLs tailored to the application.", "DevOps & Cloud", "Slash Command", "Expert"),
+    ("/ci-pipeline", "GitHub Actions CI/CD Pipeline", "Configures full automated CI/CD with parallel testing, caching, and staging deployment.", "DevOps & Cloud", "Slash Command", "Intermediate"),
+    ("/env-template", "Documented .env.example Sync", "Builds a documented .env.example template from environment variables discovered in code.", "DevOps & Cloud", "Slash Command", "Beginner"),
+    ("/readme-gen", "Professional README Generator", "Drafts an architectural README with badges, install guide, and project overview.", "Architecture & System", "Slash Command", "Beginner"),
+    ("/changelog-gen", "SemVer CHANGELOG Generator", "Compiles commits into Features, Bug Fixes, and Breaking Changes following SemVer.", "Architecture & System", "Slash Command", "Beginner"),
+    ("/openapi-spec", "OpenAPI v3.1 Spec Generator", "Introspects REST route handlers to output complete Swagger/OpenAPI documentation.", "Architecture & System", "Slash Command", "Intermediate"),
+    ("/mock-api", "MSW & Mock Server Generator", "Creates realistic Mock Service Worker handlers for autonomous frontend development.", "Web & Frontend", "Slash Command", "Intermediate"),
+    ("/bench", "Algorithmic Benchmark Suite", "Benchmarks execution speed (ops/sec) and memory footprint for critical functions.", "Debugging & Tests", "Slash Command", "Expert"),
+    ("/bundle-size", "Bundle Analyzer & Tree-Shaker", "Identifies oversized vendor dependencies and suggests lightweight alternatives.", "Web & Frontend", "Slash Command", "Intermediate")
 ]
 
-for cmd, ctitle, cdesc, ccat, ctype, cdiff in claude_commands:
+for cmd, ctitle, cdesc, ccat, ctype, cdiff in claude_commands_en:
     add_entry(
         f"claude-{cmd[1:]}", ctitle, cmd, "claude", ccat, ctype,
         cdesc,
-        f"Commande slash officielle Claude Code pour {ctitle.lower()}. {cdesc}",
+        f"Official Anthropic Claude Code slash command for {ctitle.lower()}. {cdesc}",
         f"{cmd} [options] [arguments]",
-        [{"name": "args", "type": "string", "required": False, "description": "Options contextuelles"}],
+        [{"name": "args", "type": "string", "required": False, "description": "Contextual command options and flags"}],
         f"{cmd} --help",
         "Terminal" if ctype == "Slash Command" else "Sparkles",
         "from-amber-500 to-orange-600",
@@ -324,296 +323,289 @@ for cmd, ctitle, cdesc, ccat, ctype, cdiff in claude_commands:
         cmd in ["/compact", "/cost", "/doctor", "/init", "/review", "/search", "/test", "/status"]
     )
 
-# Additional Claude Prompt Patterns & Rules (60 items to reach 110)
+# Additional Claude Prompt Patterns (60 items)
+c_pats_en = [
+    ("xml-tags", "XML Tag Structured Prompting", "Encloses input data in <source_code>, <spec>, and <context> tags for clean contextual separation.", "Architecture & System", "Prompt Template"),
+    ("cot-trigger", "Chain-of-Thought <thinking> Trigger", "Forces the model to articulate step-by-step reasoning before outputting final code solutions.", "Workflow & Agents", "Prompt Template"),
+    ("system-role-inject", "High-Expertise Principal Engineer Persona", "Configures the model as a Senior Principal Staff Engineer with deep domain knowledge.", "Architecture & System", "Prompt Template"),
+    ("few-shot-calib", "Few-Shot Calibration Pairs", "Provides 3 precise input/output examples to strictly enforce edge-case formats.", "AI & Multimodal", "Prompt Template"),
+    ("json-schema-guard", "Strict JSON Schema Enforcement", "Guarantees zero conversational filler and strict adherence to Pydantic/Zod schemas.", "AI & Multimodal", "Prompt Template"),
+    ("multi-turn-eval", "Multi-Turn Dialogue Stress-Testing", "Evaluates model resilience against specification changes and ambiguous constraints.", "Debugging & Tests", "Workflow"),
+    ("prompt-injection-filter", "Prompt Injection Defense Filter", "Detects and neutralizes adversarial jailbreak attempts in untrusted user inputs.", "Security & Auth", "Prompt Template"),
+    ("computer-use-agent", "Claude Computer Use OS Automation", "Enables Claude to interact with virtual displays via mouse movements and keystrokes.", "Workflow & Agents", "Skill"),
+    ("artifact-renderer", "Interactive Artifact Renderer", "Structures large outputs into isolated components visualizable in real time.", "Web & Frontend", "Skill"),
+    ("context-cache-optimizer", "Anthropic Context Cache Optimizer", "Arranges immutable prompt prefixes to achieve a 90% cache hit rate and reduce latency.", "Architecture & System", "Workflow")
+]
+
 for i in range(1, 61):
-    c_pats = [
-        ("xml-tags", "Enclosure de Données en Balises XML", "Encadre systématiquement les données d'entrée dans <source_code>, <spec>, <context> pour une séparation nette.", "Architecture & System", "Prompt Template"),
-        ("cot-trigger", "Déclencheur de Chaîne de Pensée <thinking>", "Force le modèle à expliciter son raisonnement pas à pas avant de formuler la réponse finale.", "Workflow & Agents", "Prompt Template"),
-        ("system-role-inject", "Injection de Rôle Système Haute Expertise", "Configure le contexte de prompt en tant que Principal Staff Engineer spécialisé.", "Architecture & System", "Prompt Template"),
-        ("few-shot-calib", "Calibration Few-Shot par Exemples Paires", "Fournit 3 exemples entrée/sortie parfaits pour verrouiller le format exact.", "AI & Multimodal", "Prompt Template"),
-        ("json-schema-guard", "Garantie de Sortie JSON Stricte", "Assure la conformité absolue à un schéma Pydantic ou Zod sans texte parasite.", "AI & Multimodal", "Prompt Template"),
-        ("multi-turn-eval", "Évaluation de Robustesse Multi-Tours", "Teste la résistance d'un prompt face aux ambiguïtés et changements d'avis utilisateur.", "Debugging & Tests", "Workflow"),
-        ("prompt-injection-filter", "Filtre Anti-Injection de Prompt", "Détecte et neutralise les tentatives de jailbreak dans les entrées utilisateur.", "Security & Auth", "Prompt Template"),
-        ("computer-use-agent", "Contrôle d'Interface OS Claude Computer Use", "Permet à Claude d'intéragir avec la souris et le clavier sur un bureau virtuel.", "Workflow & Agents", "Skill"),
-        ("artifact-renderer", "Moteur de Rendu d'Artefacts Interactifs", "Structure les sorties volumineuses en composants isolés visualisables en temps réel.", "Web & Frontend", "Skill"),
-        ("context-cache-optimizer", "Optimisation du Cache de Contexte Anthropic", "Organise les blocs de prompt immuables pour maximiser le taux de cache hit 90%.", "Architecture & System", "Workflow")
-    ]
-    p_info = c_pats[(i - 1) % len(c_pats)]
-    suffix = f" v{((i - 1) // len(c_pats)) + 1}" if i > len(c_pats) else ""
+    p_info = c_pats_en[(i - 1) % len(c_pats_en)]
+    suffix = f" v{((i - 1) // len(c_pats_en)) + 1}" if i > len(c_pats_en) else ""
     add_entry(
         f"claude-pattern-{p_info[0]}-{i}", f"{p_info[1]}{suffix}", f"prompt://claude/{p_info[0]}-{i}", "claude", p_info[3], p_info[4],
         p_info[2],
-        f"Pattern de prompt engineering Claude avancé : {p_info[2]} Optimisé pour Claude 3.7 Sonnet et modèles de la famille Anthropic.",
+        f"Advanced Anthropic Claude prompt engineering pattern: {p_info[2]} Optimized for Claude 3.7 Sonnet.",
         f"<prompt_pattern name='{p_info[0]}'>\n  <context>...</context>\n</prompt_pattern>",
-        [{"name": "payload", "type": "string", "required": True, "description": "Contenu à injecter dans le template"}],
-        f"Utilise le pattern {p_info[1]} pour concevoir une API REST sécurisée.",
+        [{"name": "payload", "type": "string", "required": True, "description": "Contextual data injected into the template"}],
+        f"Apply the {p_info[1]} pattern to architect a resilient payment service.",
         "Cpu", "from-amber-600 to-red-600", [p_info[0], "claude", "prompt-engineering", "anthropic"],
-        "Intermédiaire", "Anthropic Ecosystem", False
+        "Intermediate", "Anthropic Ecosystem", False
     )
 
-print(f"Claude items generated: {len(items)}")
+print(f"Claude items: {len(items)}")
 
 # ==============================================================================
-# 3. OPENAI CODEX, CURSOR & GITHUB COPILOT ECOSYSTEM (110 items)
+# 3. OPENAI CODEX, CURSOR & COPILOT ECOSYSTEM (110 items) - IN ENGLISH
 # ==============================================================================
 
-cursor_items = [
-    ("@codebase", "Recherche Globale Codebase (@codebase)", "@codebase", "cursor", "Code & Refactor", "Extension",
-     "Indexation vectorielle et recherche sémantique sur l'ensemble du projet.",
-     "Permet d'interroger la totalité des fichiers du dépôt en langage naturel pour comprendre l'architecture, localiser des flux de données et trouver des exemples d'implémentation.",
-     "@codebase <question_sur_le_projet>",
-     [{"name": "question", "type": "string", "required": True, "description": "Question sur la structure ou le fonctionnement du code"}],
-     "@codebase Où sont définies les routes de paiement Stripe et comment est géré le webhook d'échec ?",
-     "Search", "from-emerald-500 to-teal-700", ["cursor", "codebase", "indexing", "semantic-search", "embeddings"], "Débutant", "Cursor AI", True),
+cursor_items_en = [
+    ("@codebase", "Global Codebase Vector Index (@codebase)", "@codebase", "cursor", "Code & Refactor", "Extension",
+     "Vector indexing and semantic search across the entire repository.",
+     "Enables natural language queries across all codebase files to understand architectural flow, trace call stacks, and find implementation examples.",
+     "@codebase <question_about_project>",
+     [{"name": "question", "type": "string", "required": True, "description": "Question regarding repository architecture or implementation"}],
+     "@codebase Where are Stripe payment webhook handlers configured and how are payment failures handled?",
+     "Search", "from-emerald-500 to-teal-700", ["cursor", "codebase", "indexing", "semantic-search", "embeddings"], "Beginner", "Cursor AI", True),
 
-    ("@web", "Recherche Web Temps Réel (@web)", "@web", "cursor", "Web & Frontend", "Extension",
-     "Interroge Google/Bing pour extraire la documentation à jour et les dernières versions de packages.",
-     "Effectue une recherche en direct sur le web pour résoudre des erreurs récentes, consulter des APIs sorties récemment ou vérifier des breaking changes.",
-     "@web <recherche_technique>",
-     [{"name": "recherche", "type": "string", "required": True, "description": "Terme de recherche ou problème technique"}],
-     "@web Quelles sont les breaking changes entre Next.js 14 et Next.js 15 concernant fetch() ?",
-     "Globe", "from-emerald-600 to-cyan-600", ["cursor", "web", "docs", "latest", "google"], "Débutant", "Cursor AI", True),
+    ("@web", "Live Web Search (@web)", "@web", "cursor", "Web & Frontend", "Extension",
+     "Searches live web documentation and package registries for current releases.",
+     "Executes real-time searches to resolve recent bugs, check newly released framework APIs, or verify breaking changes.",
+     "@web <technical_search_query>",
+     [{"name": "query", "type": "string", "required": True, "description": "Search term or technical error description"}],
+     "@web What are the breaking changes between Next.js 14 and 15 regarding fetch() caching?",
+     "Globe", "from-emerald-600 to-cyan-600", ["cursor", "web", "docs", "latest", "google"], "Beginner", "Cursor AI", True),
 
-    ("@docs", "Indexation de Documentation Officielle (@docs)", "@docs", "cursor", "Architecture & System", "Extension",
-     "Connecte et indexe la documentation en ligne d'un framework (React, Tailwind, Prisma, etc.).",
-     "Permet à Cursor de s'appuyer sur la documentation officielle exacte d'une librairie tierce pour générer du code toujours conforme aux dernières directives.",
-     "@docs <nom_librairie> <question>",
-     [{"name": "nom_librairie", "type": "string", "required": True, "description": "Documentation ciblée (ex: Tailwind CSS v4, Zustand)"}],
-     "@docs Zustand Comment implémenter un middleware de persistance avec compression LZ-String ?",
-     "BookOpen", "from-teal-500 to-emerald-600", ["cursor", "docs", "documentation", "framework", "reference"], "Débutant", "Cursor AI", True),
+    ("@docs", "Official Framework Documentation (@docs)", "@docs", "cursor", "Architecture & System", "Extension",
+     "Indexes and searches third-party framework documentation (React, Tailwind, Prisma, etc.).",
+     "Connects directly to official library documentation so code generations always adhere to modern specifications.",
+     "@docs <library_name> <question>",
+     [{"name": "library_name", "type": "string", "required": True, "description": "Target library (e.g. Tailwind v4, Zustand)"}],
+     "@docs Zustand How to configure a persistent storage middleware with LZ-String compression?",
+     "BookOpen", "from-teal-500 to-emerald-600", ["cursor", "docs", "documentation", "framework", "reference"], "Beginner", "Cursor AI", True),
 
-    ("@file", "Inclusion de Fichier Spécifique (@file)", "@file", "cursor", "Code & Refactor", "Extension",
-     "Injecte le contenu intégral d'un fichier source précis dans le contexte de prompt.",
-     "Cible un fichier clé (ex: types/database.ts, schema.prisma) pour orienter la génération de code sans saturer la fenêtre de contexte.",
-     "@file <chemin_fichier>",
-     [{"name": "chemin_fichier", "type": "string", "required": True, "description": "Chemin relatif vers le fichier"}],
-     "@file src/types/auth.ts Implémente la fonction de vérification de session basée sur ces interfaces.",
-     "FileCode", "from-green-500 to-teal-600", ["cursor", "file", "context", "targeting"], "Débutant", "Cursor AI", True),
+    ("@file", "Target File Inclusion (@file)", "@file", "cursor", "Code & Refactor", "Extension",
+     "Injects the exact content of a specific source file into the prompt context.",
+     "Focuses model attention on critical interfaces (e.g. types/database.ts) without saturating the token window.",
+     "@file <file_path>",
+     [{"name": "file_path", "type": "string", "required": True, "description": "Relative path to target file"}],
+     "@file src/types/auth.ts Implement session verification helpers conforming to these interfaces.",
+     "FileCode", "from-green-500 to-teal-600", ["cursor", "file", "context", "targeting"], "Beginner", "Cursor AI", True),
 
-    ("@folder", "Inclusion de Dossier Complet (@folder)", "@folder", "cursor", "Code & Refactor", "Extension",
-     "Transmet l'arborescence et les fichiers d'un sous-dossier au modèle.",
-     "Permet de refactoriser un module entier (ex: src/components/ui/ ou src/modules/billing/) en conservant une vue d'ensemble sur tous les composants liés.",
-     "@folder <chemin_dossier>",
-     [{"name": "chemin_dossier", "type": "string", "required": True, "description": "Chemin vers le répertoire"}],
-     "@folder src/lib/api Audite tous les clients HTTP de ce dossier pour standardiser la gestion des retries avec backoff exponentiel.",
-     "Folder", "from-emerald-500 to-green-600", ["cursor", "folder", "directory", "module", "refactor"], "Intermédiaire", "Cursor AI", True),
+    ("@folder", "Target Directory Inclusion (@folder)", "@folder", "cursor", "Code & Refactor", "Extension",
+     "Passes directory tree and file contents from a specific folder.",
+     "Refactors entire modules (e.g. src/components/ui/ or src/modules/billing/) with visibility across all interconnected files.",
+     "@folder <folder_path>",
+     [{"name": "folder_path", "type": "string", "required": True, "description": "Directory path to include"}],
+     "@folder src/lib/api Audit all HTTP clients in this folder to standardize exponential backoff retries.",
+     "Folder", "from-emerald-500 to-green-600", ["cursor", "folder", "directory", "module", "refactor"], "Intermediate", "Cursor AI", True),
 
-    ("@git", "Contexte Git & Historique (@git)", "@git", "cursor", "Code & Refactor", "Extension",
-     "Analyse les commits récents, les branches et le diff actif.",
-     "Fournit au modèle la visibilité sur les dernières modifications apportées au projet pour comprendre la genèse d'un bug ou rédiger une description de PR.",
+    ("@git", "Git History & Diff Context (@git)", "@git", "cursor", "Code & Refactor", "Extension",
+     "Inspects recent commits, active branch, and working tree diffs.",
+     "Provides context on recent edits to help debug regressions or generate accurate PR descriptions.",
      "@git <diff|log|branch>",
-     [{"name": "commande", "type": "string", "required": True, "description": "Type d'information Git ciblée"}],
-     "@git diff Résume les changements apportés et liste les impacts potentiels sur l'API publique.",
-     "GitBranch", "from-teal-600 to-emerald-700", ["cursor", "git", "diff", "history", "version-control"], "Débutant", "Cursor AI", True),
+     [{"name": "command", "type": "string", "required": True, "description": "Target Git query"}],
+     "@git diff Summarize the architectural impact of these changes on the public API.",
+     "GitBranch", "from-teal-600 to-emerald-700", ["cursor", "git", "diff", "history", "version-control"], "Beginner", "Cursor AI", True),
 
-    ("@definitions", "Recherche de Déclarations de Types (@definitions)", "@definitions", "cursor", "Code & Refactor", "Extension",
-     "Extrait les définitions de classes, types et interfaces en relation avec le symbole sélectionné.",
-     "Utilise le Language Server Protocol (LSP) pour enrichir le prompt avec les types précis sans importer les implémentations volumineuses.",
-     "@definitions <nom_symbole>",
-     [{"name": "nom_symbole", "type": "string", "required": True, "description": "Nom de la fonction ou de l'interface"}],
-     "@definitions UserSession Comment étendre ce type pour ajouter les permissions multi-comptes ?",
-     "Code", "from-green-600 to-cyan-700", ["cursor", "types", "lsp", "definitions", "symbols"], "Intermédiaire", "Cursor AI", False),
+    ("@definitions", "LSP Type Definition Lookup (@definitions)", "@definitions", "cursor", "Code & Refactor", "Extension",
+     "Extracts type definitions and interfaces for the selected code symbol.",
+     "Leverages Language Server Protocol (LSP) to provide exact signatures without pulling in bulky implementations.",
+     "@definitions <symbol_name>",
+     [{"name": "symbol_name", "type": "string", "required": True, "description": "Target class, function, or interface name"}],
+     "@definitions UserSession How to extend this type to support multi-tenant organization switching?",
+     "Code", "from-green-600 to-cyan-700", ["cursor", "types", "lsp", "definitions", "symbols"], "Intermediate", "Cursor AI", False),
 
-    ("@terminal", "Capture des Sorties Terminal (@terminal)", "@terminal", "cursor", "Debugging & Tests", "Extension",
-     "Injecte la sortie de la dernière commande exécutée (erreurs de build, stack trace).",
-     "Permet à l'IA d'analyser directement le message d'erreur ou le log de crash sans copier-coller manuel.",
-     "@terminal <dernière_erreur>",
+    ("@terminal", "Terminal Output Capture (@terminal)", "@terminal", "cursor", "Debugging & Tests", "Extension",
+     "Captures compiler error messages and stack traces from the terminal.",
+     "Allows the model to directly analyze crash logs and build failures without manual copy-pasting.",
+     "@terminal <last_error>",
      [],
-     "@terminal Corrige le problème de compilation TypeScript rapporté dans le terminal.",
-     "Terminal", "from-slate-700 to-emerald-800", ["cursor", "terminal", "logs", "error", "stacktrace"], "Débutant", "Cursor AI", True)
+     "@terminal Fix the TypeScript compilation error reported in the terminal output.",
+     "Terminal", "from-slate-700 to-emerald-800", ["cursor", "terminal", "logs", "error", "stacktrace"], "Beginner", "Cursor AI", True)
 ]
 
-for item in cursor_items:
-    add_entry(
-        item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12], item[13], item[14], item[15], item[16]
-    )
+for item in cursor_items_en:
+    add_entry(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12], item[13], item[14], item[15], item[16])
 
-# Cursor Rules (.cursorrules) & OpenAI Codex Slash Commands
-codex_rules = [
-    (".cursorrules-ts-strict", "Règle Cursor TypeScript Strict & No-Any", ".cursorrules:ts-strict", "cursor", "Code & Refactor", "Rule / Prompt", "Interdit strictement le mot-clé any et exige des types inférés Zod."),
-    (".cursorrules-nextjs-rsc", "Règle Next.js 15 Server Components", ".cursorrules:nextjs-rsc", "cursor", "Web & Frontend", "Rule / Prompt", "Force l'utilisation de React Server Components et sépare 'use client' aux extrémités."),
-    (".cursorrules-tailwind-v4", "Règle Tailwind CSS v4 Clean UI", ".cursorrules:tailwind-v4", "cursor", "Web & Frontend", "Rule / Prompt", "Standardise l'utilisation des utilitaires Tailwind sans styles inline ni CSS custom inutile."),
-    (".cursorrules-fastapi-async", "Règle FastAPI Async & Pydantic v2", ".cursorrules:fastapi-async", "cursor", "Architecture & System", "Rule / Prompt", "Exige des endpoints asynchrones avec validation stricte Pydantic v2 et docs automatiques."),
-    (".cursorrules-rust-safety", "Règle Rust Memory Safety & Clippy", ".cursorrules:rust-safety", "cursor", "Code & Refactor", "Rule / Prompt", "Évite les blocs unsafe et force la gestion d'erreurs idiomatique avec Result/Option."),
-    (".cursorrules-go-idiomatic", "Règle Go Idiomatic & Concurrency", ".cursorrules:go-idiomatic", "cursor", "Code & Refactor", "Rule / Prompt", "Respecte les conventions de nommage Go et la gestion propre des context.Context et goroutines."),
-    (".cursorrules-prisma-perf", "Règle Prisma ORM Performance Guard", ".cursorrules:prisma-perf", "cursor", "Data & Analytics", "Rule / Prompt", "Empêche les requêtes N+1 et privilégie les sélections de champs explicites select: {}."),
-    (".cursorrules-tdd-vitest", "Règle Test-Driven Development (TDD)", ".cursorrules:tdd-vitest", "cursor", "Debugging & Tests", "Rule / Prompt", "Exige l'écriture du test unitaire en échec avant la moindre ligne de code de production."),
-    (".cursorrules-security-owasp", "Règle Sécurité OWASP Top 10", ".cursorrules:security-owasp", "cursor", "Security & Auth", "Rule / Prompt", "Sanitise toutes les entrées utilisateurs, prévient les failles XSS, SQLi et CSRF."),
-    (".cursorrules-a11y-wcag", "Règle Accessibilité Web WCAG AAA", ".cursorrules:a11y-wcag", "cursor", "Web & Frontend", "Rule / Prompt", "Impose les attributs aria-label, le support complet du clavier et les contrastes 7:1.")
+codex_rules_en = [
+    (".cursorrules-ts-strict", "Cursor TypeScript Strict & No-Any Rule", ".cursorrules:ts-strict", "cursor", "Code & Refactor", "Rule / Prompt", "Strictly forbids 'any' keyword and mandates Zod inferred types."),
+    (".cursorrules-nextjs-rsc", "Next.js 15 Server Components Rule", ".cursorrules:nextjs-rsc", "cursor", "Web & Frontend", "Rule / Prompt", "Enforces React Server Components and pushes 'use client' to leaf components."),
+    (".cursorrules-tailwind-v4", "Tailwind CSS v4 Clean UI Rule", ".cursorrules:tailwind-v4", "cursor", "Web & Frontend", "Rule / Prompt", "Standardizes utility class composition and avoids unnecessary inline styles."),
+    (".cursorrules-fastapi-async", "FastAPI Async & Pydantic v2 Rule", ".cursorrules:fastapi-async", "cursor", "Architecture & System", "Rule / Prompt", "Mandates asynchronous route handlers with strict Pydantic v2 validation."),
+    (".cursorrules-rust-safety", "Rust Memory Safety & Clippy Rule", ".cursorrules:rust-safety", "cursor", "Code & Refactor", "Rule / Prompt", "Prohibits unsafe blocks and enforces idiomatic Result/Option error handling."),
+    (".cursorrules-go-idiomatic", "Go Idiomatic Concurrency Rule", ".cursorrules:go-idiomatic", "cursor", "Code & Refactor", "Rule / Prompt", "Enforces Go naming conventions, clean context.Context propagation, and channel hygiene."),
+    (".cursorrules-prisma-perf", "Prisma ORM Performance Guard", ".cursorrules:prisma-perf", "cursor", "Data & Analytics", "Rule / Prompt", "Eliminates N+1 query bottlenecks by enforcing explicit select: {} projections."),
+    (".cursorrules-tdd-vitest", "Test-Driven Development (TDD) Rule", ".cursorrules:tdd-vitest", "cursor", "Debugging & Tests", "Rule / Prompt", "Requires writing a failing unit test before any production code implementation."),
+    (".cursorrules-security-owasp", "OWASP Top 10 Security Guardrail", ".cursorrules:security-owasp", "cursor", "Security & Auth", "Rule / Prompt", "Sanitizes all user inputs, prevents XSS, SQLi, and CSRF vulnerabilities."),
+    (".cursorrules-a11y-wcag", "WCAG AAA Web Accessibility Standard", ".cursorrules:a11y-wcag", "cursor", "Web & Frontend", "Rule / Prompt", "Mandates aria-label attributes, keyboard focus management, and 7:1 contrast ratios.")
 ]
 
-for rid, rtitle, rcomm, rplat, rcat, rtype, rdesc in codex_rules:
+for rid, rtitle, rcomm, rplat, rcat, rtype, rdesc in codex_rules_en:
     add_entry(
         rid, rtitle, rcomm, rplat, rcat, rtype,
         rdesc,
-        f"Fichier de règle .cursorrules pour automatiser les standards de qualité de l'équipe : {rdesc}",
-        f"// .cursorrules\n{rcomm}\n// Directives actives dans Cursor IDE",
+        f".cursorrules governance file to automate team engineering standards: {rdesc}",
+        f"// .cursorrules\n{rcomm}\n// Active directives in Cursor IDE",
         [],
-        f"Génère un composant d'authentification en respectant la règle {rtitle}.",
+        f"Build an authentication component strictly following the {rtitle} specification.",
         "ShieldCheck" if "Security" in rcat else "FileCode",
         "from-emerald-500 to-teal-700",
         [rid, "cursorrules", "cursor", "best-practices"],
-        "Intermédiaire",
+        "Intermediate",
         "Cursor Community",
         True
     )
 
-# Populate remaining OpenAI Codex & Copilot CLI commands to reach 110 items
-codex_copilot_cmds = [
-    ("gh-copilot-suggest", "GitHub Copilot Suggest Shell (/suggest)", "gh copilot suggest", "codex", "DevOps & Cloud", "Slash Command", "Génère des commandes shell bash/zsh à partir d'une consigne en langage naturel."),
-    ("gh-copilot-explain", "GitHub Copilot Explain Command (/explain)", "gh copilot explain", "codex", "DevOps & Cloud", "Slash Command", "Décrypte la syntaxe complexe d'une commande shell ou d'un pipeline unix."),
-    ("codex-edit", "Codex Inline Code Editor (/edit)", "/edit", "codex", "Code & Refactor", "Slash Command", "Modifie directement la sélection de code active dans l'éditeur sans sortir du flux."),
-    ("codex-generate", "Codex Code Generator (/generate)", "/generate", "codex", "Code & Refactor", "Slash Command", "Génère des fonctions entières ou des structures de classes à partir de commentaires de spécification."),
-    ("codex-fix", "Codex Quick Bug Fixer (/fix)", "/fix", "codex", "Debugging & Tests", "Slash Command", "Détecte les erreurs de syntaxe ou exceptions runtime et propose un patch immédiat."),
-    ("codex-doc", "Codex JSDoc / Docstring Generator (/doc)", "/doc", "codex", "Architecture & System", "Slash Command", "Génère une documentation de code complète et typée au format standard."),
-    ("codex-translate", "Codex Multi-Language Code Converter (/translate)", "/translate", "codex", "Code & Refactor", "Slash Command", "Traduit du code d'un langage vers un autre (ex: Python vers Rust, JavaScript vers Go)."),
-    ("codex-bench", "Codex Benchmark Suite Generator (/bench)", "/bench", "codex", "Debugging & Tests", "Slash Command", "Crée des benchmarks automatisés pour comparer deux algorithmes."),
-    ("codex-optimize", "Codex Algorithmic Optimizer (/optimize)", "/optimize", "codex", "Code & Refactor", "Slash Command", "Réduit la complexité temporelle et spatiale d'un algorithme critique."),
-    ("codex-migrate", "Codex Framework Migration Wizard (/migrate)", "/migrate", "codex", "Code & Refactor", "Slash Command", "Accompagne la migration de bibliothèques (ex: Vue 2 vers Vue 3, Express vers Fastify).")
+codex_copilot_cmds_en = [
+    ("gh-copilot-suggest", "GitHub Copilot Suggest Shell (/suggest)", "gh copilot suggest", "codex", "DevOps & Cloud", "Slash Command", "Generates complex shell commands and unix pipelines from natural language prompts."),
+    ("gh-copilot-explain", "GitHub Copilot Explain Command (/explain)", "gh copilot explain", "codex", "DevOps & Cloud", "Slash Command", "Decodes cryptic shell commands, regexes, and flags step by step."),
+    ("codex-edit", "Codex Inline Code Editor (/edit)", "/edit", "codex", "Code & Refactor", "Slash Command", "Edits selected code blocks directly in-place without leaving developer flow."),
+    ("codex-generate", "Codex Code Generator (/generate)", "/generate", "codex", "Code & Refactor", "Slash Command", "Generates full function implementations from docstring specifications."),
+    ("codex-fix", "Codex Quick Bug Fixer (/fix)", "/fix", "codex", "Debugging & Tests", "Slash Command", "Detects syntax errors or runtime exceptions and proposes verified fixes."),
+    ("codex-doc", "Codex JSDoc / Docstring Generator (/doc)", "/doc", "codex", "Architecture & System", "Slash Command", "Generates comprehensive, type-annotated docstrings following standards."),
+    ("codex-translate", "Codex Multi-Language Code Converter (/translate)", "/translate", "codex", "Code & Refactor", "Slash Command", "Translates code across languages (e.g. Python to Rust, JavaScript to Go)."),
+    ("codex-bench", "Codex Benchmark Suite Generator (/bench)", "/bench", "codex", "Debugging & Tests", "Slash Command", "Creates automated microbenchmarks to compare competing algorithms."),
+    ("codex-optimize", "Codex Algorithmic Optimizer (/optimize)", "/optimize", "codex", "Code & Refactor", "Slash Command", "Reduces asymptotic time and memory complexity for critical functions."),
+    ("codex-migrate", "Codex Framework Migration Wizard (/migrate)", "/migrate", "codex", "Code & Refactor", "Slash Command", "Guides framework migrations (e.g. Vue 2 to Vue 3, Express to Fastify).")
 ]
 
-for cid, ctitle, ccomm, cplat, ccat, ctype, cdesc in codex_copilot_cmds:
+for cid, ctitle, ccomm, cplat, ccat, ctype, cdesc in codex_copilot_cmds_en:
     add_entry(
         cid, ctitle, ccomm, cplat, ccat, ctype,
         cdesc,
-        f"Outil OpenAI Codex & GitHub Copilot : {cdesc}",
+        f"OpenAI Codex & GitHub Copilot CLI tool: {cdesc}",
         f"{ccomm} <instructions>",
-        [{"name": "instructions", "type": "string", "required": True, "description": "Consigne de code"}],
-        f"{ccomm} Convertis cette boucle for imbriquée en algorithme Map-Reduce parallélisé.",
+        [{"name": "instructions", "type": "string", "required": True, "description": "Natural language prompt"}],
+        f"{ccomm} Convert this nested loop into a parallelized Map-Reduce algorithm.",
         "Code", "from-emerald-600 to-green-700", [cid, "codex", "copilot", "openai"],
-        "Intermédiaire", "OpenAI / GitHub", True
+        "Intermediate", "OpenAI / GitHub", True
     )
 
 for i in range(1, 83):
     idx = i
     add_entry(
-        f"codex-cursor-rule-{idx}", f"Directive d'Ingénierie Codex #{idx}", f"/codex-rule-{idx}", "codex", "Code & Refactor", "Rule / Prompt",
-        f"Règle d'optimisation et de gouvernance de code Codex #{idx}.",
-        f"Directive technique avancée pour OpenAI Codex et Cursor garantissant l'alignement architectural et la robustesse du code.",
+        f"codex-cursor-rule-{idx}", f"Codex Engineering Directive #{idx}", f"/codex-rule-{idx}", "codex", "Code & Refactor", "Rule / Prompt",
+        f"Codex code optimization and architectural governance directive #{idx}.",
+        f"Advanced engineering directive for OpenAI Codex and Cursor ensuring architectural alignment and code resilience.",
         f"/codex-rule-{idx} --strict",
-        [{"name": "--strict", "type": "boolean", "required": False, "description": "Active le mode de conformité rigide"}],
-        f"/codex-rule-{idx} Applique ce pattern sur l'ensemble du module de traitement des données.",
+        [{"name": "--strict", "type": "boolean", "required": False, "description": "Enforces strict conformance mode"}],
+        f"/codex-rule-{idx} Apply this design pattern across all data ingestion workers.",
         "Sparkles", "from-green-500 to-emerald-700", ["codex", "cursor", "rule", f"rule-{idx}"],
-        "Intermédiaire" if idx % 2 == 0 else "Expert", "Cursor / OpenAI", False
+        "Intermediate" if idx % 2 == 0 else "Expert", "Cursor / OpenAI", False
     )
 
-print(f"Codex & Cursor items generated: {len(items)}")
+print(f"Codex & Cursor items: {len(items)}")
 
 # ==============================================================================
-# 4. MODEL CONTEXT PROTOCOL (MCP) SERVERS (120 items)
+# 4. MODEL CONTEXT PROTOCOL (MCP) SERVERS (120 items) - IN ENGLISH
 # ==============================================================================
 
-mcp_servers = [
-    ("filesystem", "MCP Filesystem Server", "Lecture et écriture sécurisée sur le système de fichiers local avec isolation de répertoire.", "Architecture & System", "Expert"),
-    ("git", "MCP Git Version Control", "Inspection des branches, commits, diffs et historique de versionnage Git.", "Code & Refactor", "Intermédiaire"),
-    ("github", "MCP GitHub API Integration", "Gestion des issues, pull requests, reviews de code et releases GitHub.", "DevOps & Cloud", "Intermédiaire"),
-    ("gitlab", "MCP GitLab Enterprise Server", "Automatisation de merge requests, pipelines CI/CD et tickets GitLab.", "DevOps & Cloud", "Intermédiaire"),
-    ("postgres", "MCP PostgreSQL Database", "Exécution de requêtes SQL, inspection de schémas et explain analyze sur PostgreSQL.", "Data & Analytics", "Expert"),
-    ("sqlite", "MCP SQLite Embedded Database", "Requêtage rapide et modifications de bases SQLite locales.", "Data & Analytics", "Débutant"),
-    ("mysql", "MCP MySQL & MariaDB Server", "Connexion sécurisée, introspection de tables et exécution de requêtes MySQL.", "Data & Analytics", "Intermédiaire"),
-    ("mongodb", "MCP MongoDB Document Store", "Opérations CRUD, pipelines d'agrégation et requêtes NoSQL MongoDB.", "Data & Analytics", "Intermédiaire"),
-    ("redis", "MCP Redis In-Memory Cache", "Gestion de clés/valeurs, structures Redis (Hashes, Sets) et flux Pub/Sub.", "Data & Analytics", "Intermédiaire"),
-    ("puppeteer", "MCP Puppeteer Web Automation", "Contrôle de navigateur Chromium, captures d'écran, génération de PDF et tests E2E.", "Web & Frontend", "Intermédiaire"),
-    ("playwright", "MCP Playwright Multi-Browser", "Automatisation cross-browser (Chromium, Firefox, WebKit) et tests d'intégration.", "Web & Frontend", "Intermédiaire"),
-    ("brave-search", "MCP Brave Web Search API", "Recherche web indépendante, indexation d'actualités et extraction de résultats pertinents.", "Web & Frontend", "Débutant"),
-    ("tavily", "MCP Tavily AI Research Engine", "Moteur de recherche web optimisé pour les agents IA et synthèses documentaires.", "AI & Multimodal", "Intermédiaire"),
-    ("fetch", "MCP Web Fetch & HTML to Markdown", "Téléchargement de contenu web et conversion en Markdown nettoyé sans balises superflues.", "Web & Frontend", "Débutant"),
-    ("memory", "MCP Graph Memory & Knowledge Graph", "Persistance de graphes d'entités et relations entre les sessions utilisateur.", "AI & Multimodal", "Expert"),
-    ("sequential-thinking", "MCP Sequential Thinking Dynamic", "Raisonnement étape par étape avec ajustement dynamique d'hypothèses et révision de plan.", "Workflow & Agents", "Expert"),
-    ("google-drive", "MCP Google Drive Documents & Files", "Recherche, lecture et modification de documents Google Docs, Sheets et Slides.", "Workflow & Agents", "Intermédiaire"),
-    ("google-maps", "MCP Google Maps Platform & Routing", "Calcul d'itinéraires, géocodage, recherche de lieux et données environnementales.", "Web & Frontend", "Intermédiaire"),
-    ("google-calendar", "MCP Google Calendar Scheduler", "Consultation d'agendas, création d'événements et détection de créneaux libres.", "Workflow & Agents", "Débutant"),
-    ("gmail", "MCP Gmail API Connector", "Recherche de courriels, analyse de pièces jointes et rédaction de réponses.", "Workflow & Agents", "Intermédiaire"),
-    ("slack", "MCP Slack Team Communication", "Envoi de messages dans les canaux Slack, recherche dans les fils de discussion et alertes.", "Workflow & Agents", "Intermédiaire"),
-    ("discord", "MCP Discord Bot Integration", "Gestion de serveurs Discord, modération et réponses interactives dans les salons.", "Workflow & Agents", "Intermédiaire"),
-    ("docker", "MCP Docker Engine Management", "Inspection de conteneurs, suivi des logs, création d'images et réseaux Docker.", "DevOps & Cloud", "Intermédiaire"),
-    ("kubernetes", "MCP Kubernetes Cluster Control", "Déploiement de pods, gestion des ingress, inspection de namespaces et logs k8s.", "DevOps & Cloud", "Expert"),
-    ("sentry", "MCP Sentry Error Tracking", "Analyse des exceptions en production, stack traces et métriques de performance Sentry.", "Debugging & Tests", "Intermédiaire"),
-    ("datadog", "MCP Datadog Observability", "Surveillance des métriques APM, tableaux de bord d'infrastructure et alertes.", "DevOps & Cloud", "Expert"),
-    ("cloudflare", "MCP Cloudflare DNS & Workers API", "Gestion des zones DNS, déploiement de scripts Workers et stockage KV.", "DevOps & Cloud", "Intermédiaire"),
-    ("linear", "MCP Linear Issue Tracking", "Gestion de tickets de développement, sprints, priorités et assignations Linear.", "Workflow & Agents", "Débutant"),
-    ("jira", "MCP Atlassian Jira Project Management", "Gestion de projets agiles Jira, tickets et workflows personnalisés.", "Workflow & Agents", "Intermédiaire"),
-    ("notion", "MCP Notion Workspace API", "Lecture et mise à jour de bases de données, pages et wikis d'entreprise Notion.", "Workflow & Agents", "Intermédiaire"),
-    ("obsidian", "MCP Obsidian Local Markdown Vault", "Navigation bidirectionnelle et indexation de notes Markdown dans un coffre Obsidian.", "Architecture & System", "Débutant"),
-    ("airtable", "MCP Airtable Relational Base", "Synchronisation de tables Airtable, vues Kanban et automatisations de données.", "Data & Analytics", "Débutant"),
-    ("stripe", "MCP Stripe Payment Gateway", "Inspection de transactions, abonnements, factures et webhooks Stripe.", "Security & Auth", "Expert"),
-    ("supabase", "MCP Supabase Backend Platform", "Administration de base Postgres, auth, storage et fonctions Edge Supabase.", "Data & Analytics", "Intermédiaire"),
-    ("qdrant", "MCP Qdrant Vector Database", "Indexation et recherche sémantique vectorielle pour applications RAG.", "AI & Multimodal", "Intermédiaire"),
-    ("pinecone", "MCP Pinecone Serverless Vector Index", "Gestion d'index vectoriels cloud à haute échelle et faible latence.", "AI & Multimodal", "Intermédiaire"),
-    ("weaviate", "MCP Weaviate Semantic Search", "Recherche hybride vectorielle et lexicale avec modules de classification IA.", "AI & Multimodal", "Intermédiaire"),
-    ("chroma", "MCP ChromaDB Embedded Vector Store", "Base de données vectorielle locale légère pour prototypes et agents de bureau.", "AI & Multimodal", "Débutant"),
-    ("duckdb", "MCP DuckDB In-Process SQL Analytics", "Analyse ultra-rapide de fichiers Parquet, CSV et JSON en local avec DuckDB.", "Data & Analytics", "Intermédiaire"),
-    ("snowflake", "MCP Snowflake Cloud Data Warehouse", "Exécution de requêtes analytiques massives sur entrepôts de données Snowflake.", "Data & Analytics", "Expert"),
-    ("databricks", "MCP Databricks Lakehouse Platform", "Exécution de notebooks, jobs Spark et gestion du Unity Catalog.", "Data & Analytics", "Expert"),
-    ("arxiv", "MCP arXiv Academic Papers", "Recherche et téléchargement de papiers scientifiques récents sur arXiv.", "Science & Bio", "Débutant"),
-    ("weather", "MCP Weather Forecast API", "Données météorologiques temps réel, prévisions et alertes climatiques mondiales.", "Web & Frontend", "Débutant"),
-    ("everart", "MCP EverArt Generative Image Studio", "Génération et modification d'images artistiques par modèles de diffusion.", "AI & Multimodal", "Intermédiaire")
+mcp_servers_en = [
+    ("filesystem", "MCP Filesystem Server", "Secure local file read and write operations with directory boundary sandboxing.", "Architecture & System", "Expert"),
+    ("git", "MCP Git Version Control", "Inspects Git branches, commit logs, file diffs, and versioning history.", "Code & Refactor", "Intermediate"),
+    ("github", "MCP GitHub API Integration", "Manages GitHub issues, pull requests, automated reviews, and repository releases.", "DevOps & Cloud", "Intermediate"),
+    ("gitlab", "MCP GitLab Enterprise Server", "Automates merge requests, CI/CD pipelines, and project issue trackers.", "DevOps & Cloud", "Intermediate"),
+    ("postgres", "MCP PostgreSQL Database", "Executes SQL queries, inspects database schemas, and runs EXPLAIN ANALYZE on PostgreSQL.", "Data & Analytics", "Expert"),
+    ("sqlite", "MCP SQLite Embedded Database", "Fast querying, schema inspection, and data mutations on local SQLite files.", "Data & Analytics", "Beginner"),
+    ("mysql", "MCP MySQL & MariaDB Server", "Secure connection, table introspection, and SQL execution for MySQL databases.", "Data & Analytics", "Intermediate"),
+    ("mongodb", "MCP MongoDB Document Store", "CRUD operations, aggregation pipelines, and NoSQL collection queries.", "Data & Analytics", "Intermediate"),
+    ("redis", "MCP Redis In-Memory Cache", "Key-value management, Redis data structures (Hashes, Sets), and Pub/Sub streams.", "Data & Analytics", "Intermediate"),
+    ("puppeteer", "MCP Puppeteer Web Automation", "Controls Chromium headless instances, captures screenshots, and renders PDFs.", "Web & Frontend", "Intermediate"),
+    ("playwright", "MCP Playwright Multi-Browser", "Cross-browser testing (Chromium, Firefox, WebKit) and integration automation.", "Web & Frontend", "Intermediate"),
+    ("brave-search", "MCP Brave Web Search API", "Independent web search, news indexing, and high-relevance query extraction.", "Web & Frontend", "Beginner"),
+    ("tavily", "MCP Tavily AI Research Engine", "Search engine optimized for AI agents and automated document synthesis.", "AI & Multimodal", "Intermediate"),
+    ("fetch", "MCP Web Fetch & Markdown Converter", "Downloads web content and converts raw HTML into sanitized Markdown.", "Web & Frontend", "Beginner"),
+    ("memory", "MCP Knowledge Graph Memory", "Persists dynamic entity graphs and cross-session contextual memories.", "AI & Multimodal", "Expert"),
+    ("sequential-thinking", "MCP Sequential Thinking Dynamic", "Step-by-step reasoning engine with dynamic hypothesis testing and plan revision.", "Workflow & Agents", "Expert"),
+    ("google-drive", "MCP Google Drive Documents", "Searches, reads, and updates Google Docs, Sheets, and Slides files.", "Workflow & Agents", "Intermediate"),
+    ("google-maps", "MCP Google Maps Platform", "Calculates routing, geocoding, place lookups, and environmental data.", "Web & Frontend", "Intermediate"),
+    ("google-calendar", "MCP Google Calendar Scheduler", "Queries schedules, creates events, and finds open collaboration windows.", "Workflow & Agents", "Beginner"),
+    ("gmail", "MCP Gmail API Connector", "Searches emails, analyzes attachments, and drafts smart contextual replies.", "Workflow & Agents", "Intermediate"),
+    ("slack", "MCP Slack Team Communication", "Posts to Slack channels, searches message history, and triggers bot alerts.", "Workflow & Agents", "Intermediate"),
+    ("discord", "MCP Discord Bot Integration", "Manages Discord servers, moderates channels, and answers community queries.", "Workflow & Agents", "Intermediate"),
+    ("docker", "MCP Docker Engine Management", "Inspects containers, streams real-time logs, and builds container images.", "DevOps & Cloud", "Intermediate"),
+    ("kubernetes", "MCP Kubernetes Cluster Control", "Deploys pods, inspects namespaces, manages ingresses, and checks k8s logs.", "DevOps & Cloud", "Expert"),
+    ("sentry", "MCP Sentry Error Tracking", "Analyzes production exception stack traces and application performance metrics.", "Debugging & Tests", "Intermediate"),
+    ("datadog", "MCP Datadog Observability", "Monitors APM traces, infrastructure dashboards, and real-time alerts.", "DevOps & Cloud", "Expert"),
+    ("cloudflare", "MCP Cloudflare DNS & Workers", "Manages DNS zones, deploys Worker scripts, and queries KV namespaces.", "DevOps & Cloud", "Intermediate"),
+    ("linear", "MCP Linear Issue Tracking", "Manages sprint cycles, project roadmaps, and developer task assignments.", "Workflow & Agents", "Beginner"),
+    ("jira", "MCP Atlassian Jira Agile", "Coordinates agile sprint boards, issue backlogs, and enterprise workflows.", "Workflow & Agents", "Intermediate"),
+    ("notion", "MCP Notion Workspace API", "Reads and updates enterprise Notion databases, documents, and wikis.", "Workflow & Agents", "Intermediate"),
+    ("obsidian", "MCP Obsidian Local Markdown Vault", "Bidirectional link exploration and full-text search across Obsidian vaults.", "Architecture & System", "Beginner"),
+    ("airtable", "MCP Airtable Relational Base", "Synchronizes relational Airtable records, Kanban views, and automations.", "Data & Analytics", "Beginner"),
+    ("stripe", "MCP Stripe Payment Gateway", "Inspects transactions, recurring subscriptions, invoices, and webhook logs.", "Security & Auth", "Expert"),
+    ("supabase", "MCP Supabase Backend Platform", "Administers Postgres databases, auth policies, storage, and Edge Functions.", "Data & Analytics", "Intermediate"),
+    ("qdrant", "MCP Qdrant Vector Database", "High-performance vector indexing and semantic similarity search for RAG.", "AI & Multimodal", "Intermediate"),
+    ("pinecone", "MCP Pinecone Serverless Vector Index", "Cloud-native vector database for ultra-low latency semantic embeddings.", "AI & Multimodal", "Intermediate"),
+    ("weaviate", "MCP Weaviate Semantic Search", "Hybrid vector and BM25 lexical search with built-in ML classification modules.", "AI & Multimodal", "Intermediate"),
+    ("chroma", "MCP ChromaDB Embedded Vector Store", "Lightweight embedded vector store for local agent prototypes.", "AI & Multimodal", "Beginner"),
+    ("duckdb", "MCP DuckDB In-Process SQL Analytics", "Blazing-fast analytical queries directly on Parquet, CSV, and JSON files.", "Data & Analytics", "Intermediate"),
+    ("snowflake", "MCP Snowflake Cloud Data Warehouse", "Executes enterprise SQL queries on massive petabyte-scale Snowflake warehouses.", "Data & Analytics", "Expert"),
+    ("databricks", "MCP Databricks Lakehouse Platform", "Executes Spark notebooks, triggers jobs, and queries Unity Catalog.", "Data & Analytics", "Expert"),
+    ("arxiv", "MCP arXiv Academic Papers", "Searches and downloads latest research publications from arXiv repository.", "Science & Bio", "Beginner"),
+    ("weather", "MCP Weather Forecast API", "Retrieves live meteorological data, radar maps, and severe weather warnings.", "Web & Frontend", "Beginner"),
+    ("everart", "MCP EverArt Generative Image Studio", "Generates and edits artistic images using state-of-the-art diffusion models.", "AI & Multimodal", "Intermediate")
 ]
 
-for msid, mstitle, msdesc, mscat, msdiff in mcp_servers:
+for msid, mstitle, msdesc, mscat, msdiff in mcp_servers_en:
     add_entry(
         f"mcp-server-{msid}", mstitle, f"mcp://{msid}", "mcp", mscat, "MCP Server",
         msdesc,
-        f"Serveur officiel Model Context Protocol (MCP) : {mstitle}. Permet aux assistants IA de se connecter directement à l'écosystème {msid}.",
+        f"Official Model Context Protocol (MCP) server: {mstitle}. Connects AI models directly to the {msid} ecosystem.",
         f"npx -y @modelcontextprotocol/server-{msid} [options]",
-        [{"name": "--config", "type": "string", "required": False, "description": "Fichier de configuration de connexion"}],
+        [{"name": "--config", "type": "string", "required": False, "description": "Connection configuration path"}],
         f"npx -y @modelcontextprotocol/server-{msid} --port 3000",
         "Server", "from-purple-500 to-indigo-600", [msid, "mcp", "server", "model-context-protocol", mscat.lower()],
         msdiff, "MCP Community / Anthropic", True
     )
 
-# Additional MCP Community Servers (to reach 120 items)
 for i in range(1, 77):
     comm_id = f"community-mcp-{i}"
     c_cat = CATEGORIES[(i % (len(CATEGORIES) - 1)) + 1]["id"]
     add_entry(
-        comm_id, f"Serveur MCP Communautaire #{i}", f"mcp://community-{i}", "mcp", c_cat, "MCP Server",
-        f"Extension MCP spécialisée #{i} pour l'intégration de services tiers et d'outils cloud.",
-        f"Connecteur MCP open-source étendant les fonctionnalités des modèles de langage avec des outils métier dédiés #{i}.",
+        comm_id, f"Community MCP Server #{i}", f"mcp://community-{i}", "mcp", c_cat, "MCP Server",
+        f"Specialized community MCP integration #{i} for third-party cloud tools and APIs.",
+        f"Open-source Model Context Protocol connector expanding AI assistant tooling capabilities with custom service #{i}.",
         f"npx -y mcp-tool-provider-{i} --auth-token $MCP_TOKEN",
-        [{"name": "--auth-token", "type": "string", "required": True, "description": "Jeton d'authentification API"}],
+        [{"name": "--auth-token", "type": "string", "required": True, "description": "API authentication token"}],
         f"npx -y mcp-tool-provider-{i} --sync-data",
         "Box", "from-purple-600 to-pink-600", ["mcp", f"tool-{i}", "integration", c_cat.lower()],
-        "Intermédiaire", "MCP Open Ecosystem", False
+        "Intermediate", "MCP Open Ecosystem", False
     )
 
-print(f"MCP items generated: {len(items)}")
+print(f"MCP items: {len(items)}")
 
 # ==============================================================================
-# 5. UNIVERSAL DEVELOPER WORKFLOWS & EXTENSIONS (to reach exactly 500)
+# 5. UNIVERSAL DEVELOPER WORKFLOWS (to reach 500) - IN ENGLISH
 # ==============================================================================
 
-universal_workflows = [
-    ("uni-rag-pipeline", "Architecture RAG Hybride & Re-Ranking", "/rag-pipeline", "universal", "AI & Multimodal", "Workflow", "Mise en place d'un pipeline RAG combinant recherche vectorielle et BM25 avec reranker Cross-Encoder."),
-    ("uni-jwt-rbac", "Authentification JWT avec RBAC & Refresh Tokens", "/jwt-rbac", "universal", "Security & Auth", "Workflow", "Conception d'une authentification JWT sans état avec rotation de tokens et contrôle d'accès basé sur les rôles."),
-    ("uni-cqrs-event-sourcing", "Pattern CQRS & Event Sourcing", "/cqrs-pattern", "universal", "Architecture & System", "Workflow", "Séparation des opérations de lecture et d'écriture avec journalisation immuable des événements métier."),
-    ("uni-strangler-fig", "Migration Legacy par Strangler Fig Pattern", "/strangler-fig", "universal", "Architecture & System", "Workflow", "Remplacement progressif d'un monolithe par des microservices via un routeur proxy intelligent."),
-    ("uni-circuit-breaker", "Résilience Circuit Breaker & Retry Exponentiel", "/circuit-breaker", "universal", "Architecture & System", "Workflow", "Protection contre les pannes en cascade lors d'appels à des services tiers instables."),
-    ("uni-rate-limiting", "Rate Limiter Token Bucket avec Redis", "/rate-limiting", "universal", "Security & Auth", "Workflow", "Limitation de débit distribuée avec algorithme Token Bucket et scripts Lua Redis atomiques."),
-    ("uni-graphql-federation", "Apollo GraphQL Federation v2", "/graphql-federation", "universal", "Architecture & System", "Workflow", "Unification de multiples sous-graphes GraphQL en une passerelle d'API unique et cohérente."),
-    ("uni-grpc-protobuf", "Microservices gRPC Haute Performance", "/grpc-protobuf", "universal", "Architecture & System", "Workflow", "Communication inter-services typée binaire avec protocol buffers et streaming bidirectionnel."),
-    ("uni-webrtc-p2p", "Streaming Temps Réel P2P WebRTC", "/webrtc-p2p", "universal", "Web & Frontend", "Workflow", "Établissement de canaux de données audio/vidéo et messagerie chiffrée peer-to-peer."),
-    ("uni-zero-downtime-db", "Migration SQL Sans Interruption de Service", "/zero-downtime-db", "universal", "Data & Analytics", "Workflow", "Application du pattern Expand/Contract pour modifier des colonnes SQL sous trafic de production.")
+universal_workflows_en = [
+    ("uni-rag-pipeline", "Hybrid RAG & Cross-Encoder Re-Ranking", "/rag-pipeline", "universal", "AI & Multimodal", "Workflow", "Builds hybrid RAG architectures combining Dense Vector and BM25 Sparse search with Cross-Encoder re-rankers."),
+    ("uni-jwt-rbac", "Stateless JWT Auth with Token Rotation & RBAC", "/jwt-rbac", "universal", "Security & Auth", "Workflow", "Implements secure stateless JWT authentication with refresh token rotation and granular Role-Based Access Control."),
+    ("uni-cqrs-event-sourcing", "CQRS & Event Sourcing Architecture", "/cqrs-pattern", "universal", "Architecture & System", "Workflow", "Separates read and write data models with append-only immutable event logs for auditability and scale."),
+    ("uni-strangler-fig", "Legacy Migration via Strangler Fig Pattern", "/strangler-fig", "universal", "Architecture & System", "Workflow", "Incrementally replaces legacy monolith services with modern microservices via reverse proxy routing."),
+    ("uni-circuit-breaker", "Circuit Breaker & Exponential Backoff", "/circuit-breaker", "universal", "Architecture & System", "Workflow", "Prevents cascading microservice outages during third-party dependency network failures."),
+    ("uni-rate-limiting", "Distributed Token Bucket Rate Limiter", "/rate-limiting", "universal", "Security & Auth", "Workflow", "Enforces distributed API rate limiting with Redis atomic Lua scripts and Token Bucket algorithms."),
+    ("uni-graphql-federation", "Apollo GraphQL Federation Gateway", "/graphql-federation", "universal", "Architecture & System", "Workflow", "Unifies multiple domain subgraphs into a single, high-performance federated GraphQL gateway."),
+    ("uni-grpc-protobuf", "High-Throughput gRPC Microservices", "/grpc-protobuf", "universal", "Architecture & System", "Workflow", "Implements binary Protobuf serialization and bidirectional streaming RPC communication."),
+    ("uni-webrtc-p2p", "WebRTC Encrypted Peer-to-Peer Streaming", "/webrtc-p2p", "universal", "Web & Frontend", "Workflow", "Establishes low-latency audio/video and encrypted data channels between browser peers."),
+    ("uni-zero-downtime-db", "Zero-Downtime SQL Schema Migrations", "/zero-downtime-db", "universal", "Data & Analytics", "Workflow", "Applies the Expand/Contract database migration pattern under heavy production traffic.")
 ]
 
-for wid, wtitle, wcomm, wplat, wcat, wtype, wdesc in universal_workflows:
+for wid, wtitle, wcomm, wplat, wcat, wtype, wdesc in universal_workflows_en:
     add_entry(
         wid, wtitle, wcomm, wplat, wcat, wtype,
         wdesc,
-        f"Workflow d'ingénierie logicielle universel : {wdesc} Applicable à tout projet moderne.",
+        f"Universal software engineering workflow: {wdesc} Applicable across all modern tech stacks.",
         f"{wcomm} --target <module> [--apply]",
-        [{"name": "--target", "type": "string", "required": True, "description": "Module d'application cible"}],
+        [{"name": "--target", "type": "string", "required": True, "description": "Target application module"}],
         f"{wcomm} --target src/billing --apply",
         "Layers", "from-rose-500 to-purple-600", [wid, "universal", "architecture", "engineering"],
         "Expert", "Engineering Standards", True
     )
 
-# Fill exact remaining slots to reach exactly 500 items
 target_total = 500
 current_count = len(items)
 needed = target_total - current_count
-
-print(f"Current count: {current_count}. Generating {needed} complementary engineering items...")
 
 for i in range(1, needed + 1):
     c_cat = CATEGORIES[(i % (len(CATEGORIES) - 1)) + 1]["id"]
@@ -621,31 +613,29 @@ for i in range(1, needed + 1):
     num = current_count + i
     add_entry(
         f"omni-tool-{num}",
-        f"Module d'Ingénierie & Outil #{num}",
+        f"Engineering Directive #{num}",
         f"/tool-{num}",
         c_plat,
         c_cat,
         "Extension" if i % 2 == 0 else "Prompt Template",
-        f"Outil et directive d'accélération logicielle #{num} pour {c_cat}.",
-        f"Spécification technique détaillée et prompt d'exécution pour résoudre des problématiques d'ingénierie dans la catégorie {c_cat}.",
+        f"High-performance engineering directive #{num} specialized for {c_cat}.",
+        f"Detailed technical specification and execution prompt for solving advanced engineering challenges in {c_cat}.",
         f"/tool-{num} --target-env <dev|staging|prod> [--debug]",
-        [{"name": "--target-env", "type": "string", "required": True, "description": "Environnement cible"}],
+        [{"name": "--target-env", "type": "string", "required": True, "description": "Target deployment environment"}],
         f"/tool-{num} --target-env prod --debug",
         "Box" if i % 2 == 0 else "Sparkles",
         GRADIENTS[i % len(GRADIENTS)],
         [f"tool-{num}", c_cat.lower(), c_plat, "command"],
-        "Débutant" if i % 3 == 0 else ("Intermédiaire" if i % 3 == 1 else "Expert"),
-        "OmniCommand Vault",
+        "Beginner" if i % 3 == 0 else ("Intermediate" if i % 3 == 1 else "Expert"),
+        "KortexDeck Vault",
         False
     )
 
-# Write output JSON
 with open(DATA_FILE, "w", encoding="utf-8") as f:
     json.dump(items, f, ensure_ascii=False, indent=2)
 
 print(f"SUCCESS: Generated exactly {len(items)} items in {DATA_FILE}")
 
-# Calculate category counts
 cat_counts = {c["id"]: 0 for c in CATEGORIES}
 cat_counts["all"] = len(items)
 
@@ -657,8 +647,7 @@ for it in items:
 for c in CATEGORIES:
     c["count"] = cat_counts.get(c["id"], 0)
 
-# Write categories.js
-js_content = f"""// Catégories et plateformes dynamiques pour OmniCommand Hub
+js_content = f"""// Dynamic categories and platforms for KortexDeck
 export const CATEGORIES = {json.dumps(CATEGORIES, ensure_ascii=False, indent=2)};
 
 export const PLATFORMS = {json.dumps(PLATFORMS, ensure_ascii=False, indent=2)};
