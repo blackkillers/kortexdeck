@@ -274,7 +274,8 @@ export default function App() {
       <AIBridgeModal
         isOpen={isAIBridgeOpen}
         onClose={() => setIsAIBridgeOpen(false)}
-        favoriteItems={favoriteItems.length > 0 ? favoriteItems : commandsData.slice(0, 15)}
+        allItems={commandsData}
+        favoriteItems={favoriteItems}
       />
 
       {/* Scroll to Top Floating Button */}
