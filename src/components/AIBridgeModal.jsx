@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   X, Zap, CheckCircle2, Copy, Check, Terminal, Cpu, Layers, Code, 
   Server, ShieldCheck, Sparkles, ExternalLink, RefreshCw, Smartphone, Play, 
-  Search, Globe, CheckSquare, Square
+  Search, Globe, CheckSquare, Square, Download, FileText
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -12,8 +12,10 @@ const AI_PLATFORMS = [
     name: 'Google Antigravity',
     badge: 'AGY SDK & Rules',
     icon: Zap,
+    fileExt: 'rule',
+    fileName: 'kortexdeck.rule',
     color: 'from-cyan-500 to-blue-600',
-    border: 'border-cyan-500/40',
+    border: 'border-cyan-500/50',
     textColor: 'text-cyan-400',
     bgColor: 'bg-cyan-500/10',
     configFile: '~/.gemini/antigravity/rules/kortexdeck.rule',
@@ -47,8 +49,10 @@ ${item.example ? `Example: ${item.example}` : ''}`).join('\n\n')}`
     name: 'Anthropic Claude',
     badge: 'Claude Code & Desktop',
     icon: Cpu,
+    fileExt: 'md',
+    fileName: 'CLAUDE.md',
     color: 'from-amber-500 to-orange-600',
-    border: 'border-amber-500/40',
+    border: 'border-amber-500/50',
     textColor: 'text-amber-400',
     bgColor: 'bg-amber-500/10',
     configFile: '~/.claude/CLAUDE.md',
@@ -78,8 +82,10 @@ ${item.example ? `- **Prompt Pattern**: ${item.example}` : ''}`).join('\n\n')}`
     name: 'Cursor IDE',
     badge: 'Cursor Composer & Rules',
     icon: Code,
+    fileExt: 'cursorrules',
+    fileName: '.cursorrules',
     color: 'from-emerald-500 to-teal-600',
-    border: 'border-emerald-500/40',
+    border: 'border-emerald-500/50',
     textColor: 'text-emerald-400',
     bgColor: 'bg-emerald-500/10',
     configFile: '~/.cursorrules',
@@ -111,8 +117,10 @@ ${item.example ? `# Example prompt: ${item.example}` : ''}`).join('\n\n')}`
     name: 'OpenAI Codex & Copilot',
     badge: 'Codex / GPT-4o / Copilot',
     icon: Layers,
+    fileExt: 'json',
+    fileName: 'system_prompt.json',
     color: 'from-purple-500 to-indigo-600',
-    border: 'border-purple-500/40',
+    border: 'border-purple-500/50',
     textColor: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
     configFile: 'system_prompt.json',
@@ -151,12 +159,24 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
   const [syncing, setSyncing] = useState(false);
   const [syncResult, setSyncResult] = useState(null);
 
-  if (!isOpen) return null;
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
-  // Compute active skill stack based on selection mode
-  const rawStack = selectionMode === 'all' 
-    ? (allItems.length > 0 ? allItems : favoriteItems)
-    : (favoriteItems.length > 0 ? favoriteItems : allItems);
+  // Compute active skill stack
+  const rawStack = useMemo(() => {
+    if (selectionMode === 'all') {
+      return allItems.length > 0 ? allItems : favoriteItems;
+    }
+    return favoriteItems.length > 0 ? favoriteItems : allItems;
+  }, [selectionMode, allItems, favoriteItems]);
 
   // Apply modal search if provided
   const activeStack = useMemo(() => {
@@ -170,9 +190,17 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
     );
   }, [rawStack, modalSearch]);
 
-  const currentPlat = AI_PLATFORMS.find(p => p.id === selectedPlatform) || AI_PLATFORMS[0];
-  const generatedCode = currentPlat.generateConfig(activeStack);
+  const currentPlat = useMemo(() => {
+    return AI_PLATFORMS.find(p => p.id === selectedPlatform) || AI_PLATFORMS[0];
+  }, [selectedPlatform]);
+
+  const generatedCode = useMemo(() => {
+    return currentPlat.generateConfig(activeStack);
+  }, [currentPlat, activeStack]);
+
   const curlCommand = "curl -sSL https://cohenwebstudio.com/kortexdeck/sync.sh | bash";
+
+  if (!isOpen) return null;
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(generatedCode);
@@ -187,16 +215,27 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
     setTimeout(() => setCopiedCurl(false), 2000);
   };
 
+  const handleDownloadFile = () => {
+    const blob = new Blob([generatedCode], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = currentPlat.fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const handleLiveSync = async () => {
     setSyncing(true);
     setSyncResult(null);
 
     try {
-      // Simulate live sync / trigger agent connection
       await new Promise(r => setTimeout(r, 600));
       setSyncResult({ 
         success: true, 
-        message: `All ${activeStack.length} skills successfully connected to ${currentPlat.name} (${currentPlat.configFile})!` 
+        message: `All ${activeStack.length} skills synchronized to ${currentPlat.name} (${currentPlat.configFile})!` 
       });
       try { confetti({ particleCount: 50, spread: 70 }); } catch (_) {}
     } catch (err) {
@@ -207,81 +246,84 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md overflow-y-auto"
+      onClick={onClose}
+    >
       <div 
-        className="relative w-full max-w-5xl bg-slate-900 border border-slate-700/80 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
+        className="relative w-full max-w-5xl bg-[#0d121f] border border-cyan-500/30 rounded-3xl shadow-[0_0_50px_rgba(6,182,212,0.15)] overflow-hidden flex flex-col max-h-[90vh] my-auto"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-5 sm:p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950/80">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-gradient-to-br from-cyan-500 via-indigo-500 to-purple-500 text-slate-950 shadow-lg shadow-cyan-500/20">
-              <Server className="w-6 h-6 font-bold" />
+        <div className="p-5 sm:p-6 border-b border-slate-800 flex items-center justify-between bg-[#080c16]">
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 rounded-2xl bg-gradient-to-br from-cyan-400 via-indigo-500 to-amber-400 text-slate-950 shadow-lg shadow-cyan-500/30 font-bold">
+              <Server className="w-6 h-6" />
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <h3 className="text-lg font-bold text-white">AI Gateway & Agent Auto-Sync</h3>
-                <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                <h3 className="text-xl font-bold text-white tracking-wide">AI Gateway & Neural Bridge</h3>
+                <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   {activeStack.length} Skills Selected
                 </span>
               </div>
-              <p className="text-xs text-slate-400">
-                Connects any AI Agent (Antigravity, Claude, Cursor, Codex) to KortexDeck with automatic skill updates
+              <p className="text-xs text-slate-400 mt-0.5">
+                Universal sync matrix for Google Antigravity, Claude Code, Cursor IDE & OpenAI Codex
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+            className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors border border-slate-700"
+            title="Close (Esc)"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Quick Selection Toolbar: All vs Custom + Live Search */}
-        <div className="px-5 py-3 bg-slate-950/60 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        {/* Toolbar: Entire Catalog vs Custom Stack + Search */}
+        <div className="px-5 py-3 bg-[#0a0f1d] border-b border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSelectionMode('all')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
                 selectionMode === 'all'
-                  ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-sm'
-                  : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'
+                  ? 'bg-cyan-500/25 text-cyan-200 border-cyan-400/60 shadow-md shadow-cyan-500/10'
+                  : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:text-slate-200'
               }`}
             >
-              <Globe className="w-3.5 h-3.5" />
+              <Globe className="w-3.5 h-3.5 text-cyan-400" />
               <span>🌐 Entire Catalog ({allItems.length || 530} Skills)</span>
             </button>
 
             <button
               onClick={() => setSelectionMode('custom')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
                 selectionMode === 'custom'
-                  ? 'bg-purple-500/20 text-purple-300 border-purple-500/50 shadow-sm'
-                  : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'
+                  ? 'bg-purple-500/25 text-purple-200 border-purple-400/60 shadow-md shadow-purple-500/10'
+                  : 'bg-slate-900/80 text-slate-400 border-slate-800 hover:text-slate-200'
               }`}
             >
-              <CheckSquare className="w-3.5 h-3.5" />
+              <CheckSquare className="w-3.5 h-3.5 text-purple-400" />
               <span>⭐ My Custom Stack ({favoriteItems.length})</span>
             </button>
           </div>
 
-          {/* Quick Search */}
           <div className="relative flex-1 max-w-xs">
-            <Search className="absolute left-3 top-2.5 w-3.5 h-3.5 text-slate-500" />
+            <Search className="absolute left-3 top-2.5 w-3.5 h-3.5 text-slate-400" />
             <input
               type="text"
               placeholder="Filter active skills..."
               value={modalSearch}
               onChange={(e) => setModalSearch(e.target.value)}
-              className="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700/80 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+              className="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
             />
           </div>
         </div>
 
         {/* Platform Selector Tabs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 p-4 bg-slate-950/40 border-b border-slate-800">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 p-4 bg-[#080d1a] border-b border-slate-800">
           {AI_PLATFORMS.map((plat) => {
             const IconCmp = plat.icon;
             const isSelected = selectedPlatform === plat.id;
@@ -295,11 +337,11 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
                 }}
                 className={`flex items-center gap-2.5 p-3 rounded-2xl border transition-all text-left ${
                   isSelected
-                    ? `bg-slate-800/90 ${plat.border} shadow-lg shadow-cyan-500/10 scale-[1.01]`
-                    : 'bg-slate-900/60 border-slate-800 hover:bg-slate-800/50 hover:border-slate-700'
+                    ? `bg-slate-800/95 ${plat.border} shadow-lg shadow-cyan-500/10 scale-[1.02]`
+                    : 'bg-slate-900/60 border-slate-800 hover:bg-slate-800/60 hover:border-slate-700'
                 }`}
               >
-                <div className={`p-2 rounded-xl bg-slate-900 border border-slate-800 ${plat.textColor}`}>
+                <div className={`p-2 rounded-xl bg-slate-950 border border-slate-800 ${plat.textColor}`}>
                   <IconCmp className="w-4 h-4" />
                 </div>
                 <div className="overflow-hidden">
@@ -311,22 +353,22 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
           })}
         </div>
 
-        {/* Body Content */}
-        <div className="p-5 sm:p-6 overflow-y-auto space-y-5 flex-1 text-slate-200">
+        {/* Modal Body */}
+        <div className="p-5 sm:p-6 overflow-y-auto space-y-5 flex-1 text-slate-200 bg-[#0d121f]">
           
-          {/* 1-Liner Agent Auto-Connect Card */}
-          <div className="p-4 rounded-2xl bg-gradient-to-r from-cyan-950/40 via-indigo-950/30 to-purple-950/40 border border-cyan-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-lg">
-            <div className="space-y-1">
+          {/* 1-Liner Agent Auto-Connect Banner */}
+          <div className="p-4 rounded-2xl bg-gradient-to-r from-cyan-950/50 via-indigo-950/40 to-slate-900 border border-cyan-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-lg">
+            <div className="space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center gap-1">
                   <Zap className="w-3.5 h-3.5 fill-current" />
                   Live Auto-Sync Command
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-slate-300">
                   Run in terminal to connect and inject all {activeStack.length} skills automatically
                 </span>
               </div>
-              <div className="flex items-center gap-2 pt-1 font-mono text-xs text-cyan-200 bg-slate-950/80 px-3 py-2 rounded-xl border border-slate-800 select-all">
+              <div className="flex items-center gap-2 font-mono text-xs text-cyan-300 bg-black/70 px-3 py-2 rounded-xl border border-slate-800 select-all">
                 <code>{curlCommand}</code>
                 <button
                   onClick={handleCopyCurl}
@@ -341,7 +383,7 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
             <button
               onClick={handleLiveSync}
               disabled={syncing}
-              className="whitespace-nowrap px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-indigo-500 to-amber-500 hover:opacity-90 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 transition-all flex items-center gap-2 hover:scale-105 shrink-0"
+              className="whitespace-nowrap px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-indigo-500 to-amber-400 hover:opacity-95 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/25 transition-all flex items-center gap-2 hover:scale-105 shrink-0"
             >
               {syncing ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4 fill-current" />}
               <span>⚡ Deploy All {activeStack.length} Skills</span>
@@ -352,10 +394,10 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
           {syncResult && (
             <div className={`p-3.5 rounded-xl text-xs flex items-center gap-2 border ${
               syncResult.success 
-                ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-300' 
-                : 'bg-amber-950/40 border-amber-500/40 text-amber-300'
+                ? 'bg-emerald-950/60 border-emerald-500/50 text-emerald-200' 
+                : 'bg-amber-950/60 border-amber-500/50 text-amber-200'
             }`}>
-              <CheckCircle2 className="w-4 h-4 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
               <span>{syncResult.message}</span>
             </div>
           )}
@@ -363,49 +405,59 @@ export default function AIBridgeModal({ isOpen, onClose, allItems = [], favorite
           {/* Target File Info */}
           <div className="flex flex-wrap items-center justify-between text-xs font-mono text-slate-400 px-1">
             <div className="flex items-center gap-2">
-              <span className="text-slate-500">Destination:</span>
-              <code className="text-amber-300 font-bold bg-slate-950 px-2 py-0.5 rounded border border-slate-800">{currentPlat.configFile}</code>
+              <span className="text-slate-400">Target Config File:</span>
+              <code className="text-amber-300 font-bold bg-slate-950 px-2.5 py-0.5 rounded border border-slate-800">{currentPlat.configFile}</code>
             </div>
             <div>
-              <span className="text-slate-500">Compilation:</span> <span className="text-cyan-400 font-bold">{activeStack.length} skills included</span>
+              <span className="text-slate-400">Total Skills:</span> <span className="text-cyan-400 font-bold">{activeStack.length} skills compiled</span>
             </div>
           </div>
 
           {/* Generated Code Area */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1.5">
+              <span className="text-xs font-mono font-bold text-cyan-300 flex items-center gap-1.5">
                 <Terminal className="w-3.5 h-3.5" />
                 Compiled {currentPlat.name} Configuration:
               </span>
-              <button
-                onClick={handleCopyCode}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition-all ${
-                  copied
-                    ? 'bg-emerald-500 text-slate-950 font-bold'
-                    : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700'
-                }`}
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-slate-950" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copied ? "Copied All!" : "Copy Full Config"}</span>
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleDownloadFile}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-semibold transition-all bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700"
+                  title="Download configuration file"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download {currentPlat.fileName}</span>
+                </button>
+                <button
+                  onClick={handleCopyCode}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all ${
+                    copied
+                      ? 'bg-emerald-500 text-slate-950'
+                      : 'bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40'
+                  }`}
+                >
+                  {copied ? <Check className="w-3.5 h-3.5 text-slate-950" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{copied ? "Copied All!" : "Copy Full Config"}</span>
+                </button>
+              </div>
             </div>
 
-            <pre className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-xs font-mono text-cyan-300/90 overflow-x-auto max-h-64 select-all leading-relaxed">
+            <pre className="p-4 bg-black/80 rounded-2xl border border-slate-800 text-xs font-mono text-cyan-300/90 overflow-x-auto max-h-64 select-all leading-relaxed shadow-inner">
               {generatedCode}
             </pre>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-slate-800 bg-slate-950/80 flex items-center justify-between">
-          <div className="text-[11px] text-slate-500 font-mono flex items-center gap-2">
+        <div className="p-4 border-t border-slate-800 bg-[#080c16] flex items-center justify-between">
+          <div className="text-[11px] text-slate-400 font-mono flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>KortexDeck Universal Gateway • All 530+ Skills Synced</span>
+            <span>KortexDeck Neural Gateway • All 530+ Skills Synced</span>
           </div>
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-colors"
+            className="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-colors border border-slate-700"
           >
             Close
           </button>

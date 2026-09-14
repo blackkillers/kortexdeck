@@ -287,7 +287,7 @@
       "category": "Scraping",
       "type": "Web Automation",
       "summary": "Headless browser automation bypassing Cloudflare Turnstile, browser fingerprinting, and behavioral bot detection.",
-      "description": "Constructs undetectable web scrapers. Injects randomized mouse B\u00e9zier curves, realistic typing cadences, WebGL/Canvas noise spoofing, and rotating residential proxy pools.",
+      "description": "Constructs undetectable web scrapers. Injects randomized mouse Bézier curves, realistic typing cadences, WebGL/Canvas noise spoofing, and rotating residential proxy pools.",
       "syntax": "const browser = await playwright.chromium.launch({ args: ['--disable-blink-features=AutomationControlled'] });",
       "arguments": [
         "--stealth",
